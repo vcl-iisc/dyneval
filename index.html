@@ -233,13 +233,13 @@
               <span class="author-block">
                 <a href="https://scholar.google.com/citations?user=tg4LJ94AAAAJ&hl=en" target="_blank">Shyam Marjit</a><sup>*</sup>,</span>
               <span class="author-block">
-                <a href="https://dheerajbaiju501.github.io" target="_blank">Dheeraj Baiju</a><sup>*</sup>,</span>
+                <a href="https://www.linkedin.com/in/dheerajbaiju/" target="_blank">Dheeraj Baiju</a><sup>*</sup>,</span>
               <span class="author-block">
-                <a href="https://huggingface.co/anujms" target="_blank">Anuj Shikarkhane</a><sup>*†</sup>,</span>
+                <a href="https://www.linkedin.com/in/anuj-shikarkhane-b12323223/" target="_blank">Anuj Shikarkhane</a><sup>*†</sup>,</span>
               <span class="author-block">
-                <a href="https://www.linkedin.com/in/akhil-sakthieswaran" target="_blank">Akhil Sakthieswaran</a><sup>†</sup>,</span>
+                <a href="https://www.linkedin.com/in/akhil-sakthieswaran/" target="_blank">Akhil Sakthieswaran</a><sup>†</sup>,</span>
               <span class="author-block">
-                <a href="https://huggingface.co/sayakpaul" target="_blank">Sayak Paul</a><sup>2</sup>,</span>
+                <a href="https://sayak.dev/" target="_blank">Sayak Paul</a><sup>2</sup>,</span>
               <span class="author-block">
                 <a href="https://anirbanchakraborty.github.io/" target="_blank">Anirban Chakraborty</a></span>
             </div>
@@ -260,19 +260,6 @@
 
                       <span class="link-block">
                         <a href="https://vcl-iisc.github.io/O3SLM/" target="_blank"
-                          class="external-link button is-normal is-rounded is-dark">
-                          <span class="icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" 
-                                alt="YouTube" 
-                                style="width: 50px; height: 50px; vertical-align: middle;">
-                          </span>
-                          <span>YouTube</span>
-                        </a>
-                      </span>
-
-
-                      <span class="link-block">
-                        <a href="https://vcl-iisc.github.io/O3SLM/" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -282,7 +269,7 @@
                     </span>
 
                   <span class="link-block">
-                    <a href="https://huggingface.co/datasets/anirban-iisc/SketchVCL" target="_blank"
+                    <a href="https://huggingface.co/datasets/vcl-iisc/DynEval-dataset" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" 
@@ -295,7 +282,7 @@
 
                   <!-- TODO: Replace with your GitHub repository URL -->
                   <span class="link-block">
-                    <a href="https://github.com/vcl-iisc/O3SLM_code" target="_blank"
+                    <a href="https://github.com/vcl-iisc/dyneval_code" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -350,21 +337,9 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-
-          
-
           <p>
-          While Large Vision Language Models (LVLMs) are increasingly deployed in real-world applications, their ability to interpret abstract visual inputs remains limited. Specifically, they struggle to comprehend hand-drawn sketches, a modality that offers an intuitive means of expressing concepts that are difficult to describe textually. 
+          Recent advances in text-to-image (T2I) generation have led to models capable of producing highly realistic images. Yet, reliably evaluating their outputs remains challenging, especially at scale. Existing automatic evaluators, often relying on a static prompt set, struggle to capture subtle failure modes such as partial prompt misalignment, compositional errors or visually plausible but semantically incorrect generations. In this work, we introduce <b>\(\textbf{DynEval}\)</b>, a \(\underline{\textbf{Dyn}}\)amic \(\underline{\textbf{Eval}}\)uation framework designed to jointly assess \(\textit{text-to-image alignment}\) and \(\textit{image quality}\) of T2I models. To support scalable training beyond limited human-annotated data, we construct two large datasets. First, we build <b>\(\textbf{GenDB}\)</b>, a collection of 500K prompt-image pairs generated from human-written prompts drawn from DiffusionDB using a tiered prompt-model generation strategy. Second, building upon GenDB, we construct <b>\(\textbf{DynEvalInstruct}\)</b>, a 250K instruction dataset comprising prompt-image-response triplets distilled from a structured evaluation pipeline that decomposes evaluation into text-image alignment and visual quality reasoning. Using this dataset, we perform full fine-tuning of a compact evaluator through a curriculum learning strategy to effectively distill the superior evaluation capabilities of a larger teacher vision-language model, resulting in <b>\(\textbf{DynEval-2B}\)</b> and <b>\(\textbf{DynEval-4B}\)</b>. In extensive comparisons against existing evaluators across 11 benchmarks, our evaluator achieves a higher overall correlation with human judgments. Furthermore, it provides fine-grained analysis of the capabilities and failure modes of <b>36</b> T2I models across 42 subcategories and 9 semantic dimensions.
           </p>
-          <p> 
-          We identify the primary bottleneck as the absence of a large-scale dataset that jointly models sketches, photorealistic images, and corresponding natural language instructions. To address this, we present two key contributions: <br>
-          (1) a new, large-scale dataset of image-sketch-instruction triplets designed to facilitate both pretraining and instruction tuning
-          <br>(2) \({\texttt{O3SLM}}\), an LVLM trained on this dataset. Comprehensive evaluations on multiple sketch-based tasks: (a) object localization, (b) counting, (c) image retrieval \(\textit{i.e.}\) (SBIR and fine-grained SBIR), and (d) visual question answering (VQA); while incorporating the three existing sketch datasets, namely QuickDraw!, Sketchy, and Tu Berlin, along with our generated <b>\(\texttt{SketchVCL}\)</b> dataset, show that \(\texttt{O3SLM}\) achieves state-of-the-art performance, substantially outperforming existing LVLMs in sketch comprehension and reasoning.
-
-          </p>
-
-
           </div>
       </div>
     </div>
