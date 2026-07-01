@@ -4,242 +4,79 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="O3SLM: Open Weight, Open Data, and Open Vocabulary Sketch-Language Model">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="sketch language Model, multimodal large language models, sketches, visual istruction tuning, object detection">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="Rishi Gupta, Mukilan Karuppasamy, Shyam Marjit, Aditay Tripathi, Anirban Chakraborty">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="VCL, IISc Bangalore">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
-
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="Rishi Gupta, Mukilan Karuppasamy, Shyam Marjit, Aditay Tripathi, Anirban Chakraborty">
-  <meta name="citation_author" content="Rishi Gupta, Mukilan Karuppasamy, Shyam Marjit, Aditay Tripathi, Anirban Chakraborty">
-  <meta name="citation_publication_date" content="2025">
-  <meta name="citation_conference_title" content="AAAI">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>O3SLM | VCL | IISc</title>
-  
-  
-  <!-- Critical CSS - Load synchronously -->
+  <meta name="title" content="DynEval: Additional Results">
+  <meta name="description" content="Additional DynEval benchmark, question generation, and failure-analysis results.">
+  <meta name="keywords" content="text-to-image evaluation, T2I, VLM-as-a-judge, image quality assessment, prompt-image alignment, GenDB, DynEvalInstruct, vision-language models">
+  <meta name="author" content="Shyam Marjit, Dheeraj Baiju, Anuj Shikarkhane, Akhil Sakthieswaran, Sayak Paul, Anirban Chakraborty">
+  <title>DynEval Additional Results | VCL | IISc</title>
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "TTRV",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
 </head>
 <body>
-
-
-  <!-- Scroll to Top Button -->
   <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
     <i class="fas fa-chevron-up"></i>
   </button>
 
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        <h1 class="title is-2">DynEval: Additional Results</h1>
+        <p class="subtitle is-5">Benchmark details, dynamic question analysis, and T2I model failure attributes.</p>
+        <p><a href="./index.html">Back to project page</a></p>
+      </div>
+    </div>
+  </section>
 
+  <section class="section hero is-light">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Additional Cross-Benchmark Results</h2>
+      <p>DynEval-4B remains strongest on the additional benchmark suite used in the paper, establishing the best SRCC and PLCC on GenEval2, TIIF-Bench, UniGenBench++, and T2I-CoReBench.</p>
+      <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth">
+          <thead><tr><th>Benchmark</th><th>DynEval-4B SRCC</th><th>DynEval-4B PLCC</th><th>Previous strongest SRCC</th></tr></thead>
+          <tbody>
+            <tr><td>GenEval2</td><td><b>0.7508</b></td><td><b>0.7132</b></td><td>0.7120</td></tr>
+            <tr><td>TIIF-Bench</td><td><b>0.5980</b></td><td><b>0.6298</b></td><td>0.5495</td></tr>
+            <tr><td>UniGenBench++</td><td><b>0.4958</b></td><td><b>0.5042</b></td><td>0.4102</td></tr>
+            <tr><td>T2I-CoReBench</td><td><b>0.4856</b></td><td><b>0.4716</b></td><td>0.4469</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
+  <section class="section hero">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Dynamic IQA Question Generation</h2>
+      <p>DynEval-4B generates more IQA questions as the number of objects increases, while maintaining strong agreement with the Qwen3-VL-235B teacher.</p>
+      <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth">
+          <thead><tr><th>Objects in Image</th><th>Mean Questions</th><th>Median</th><th>Range</th><th>Coverage Ratio</th><th>BERTScore</th></tr></thead>
+          <tbody>
+            <tr><td>1-5</td><td>14.2</td><td>14</td><td>5-25</td><td>0.885</td><td>0.899</td></tr>
+            <tr><td>6-10</td><td>32.2</td><td>33</td><td>24-40</td><td>0.824</td><td>0.871</td></tr>
+            <tr><td>11-15</td><td>47.6</td><td>45</td><td>36-61</td><td>0.752</td><td>0.817</td></tr>
+            <tr><td>16-20</td><td>66.6</td><td>63</td><td>47-100</td><td>0.696</td><td>0.772</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
+  <section class="section hero is-light">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Failure Attributes</h2>
+      <img src="static/images/dyneval_capability_analysis.png" alt="Fine-grained capability analysis of 36 T2I models" loading="lazy" style="width:100%; display:block; margin:0 auto 1.25rem auto;">
+      <p>The failure analysis shows persistent weaknesses in exact counting, compositional prompts with multiple attributes, human and animal structure, uncommon size relationships, perspective control, and text or symbol rendering. These challenges remain visible across model tiers, even as stronger models improve broad object grounding and scene understanding.</p>
+      <img src="static/images/dyneval_year_trend.png" alt="Average scores assigned to T2I models grouped by publication year" loading="lazy" style="width:65%; min-width:280px; display:block; margin:1.5rem auto;">
+      <p>Year-wise trends show why alignment-only metrics can overstate progress: newer models often satisfy object and attribute presence better, but still contain visual realism and structural errors that DynEval captures through its IQA branch.</p>
+    </div>
+  </section>
 
-<!-- Method Section -->
-<section class="section" id="method">
-  <div class="container is-max-desktop content">
-    
-    <h2 class="title">Qualitative Results for Detection</h2>
-    <div class="columns is-centered"> 
-      <img src="static/images/X_detection_1.png" alt="Method Overview" style="width:80%;">
-      <!-- <img src="static/images/X_detection_2.png" alt="Method Overview" style="width:80%;"> -->
-      <p style="text-align: left; margin-top: 0.5em;"> 
-  </div>
-  <div class="columns is-centered"> 
-      <!-- <img src="static/images/X_detection_1.png" alt="Method Overview" style="width:80%;"> -->
-      <img src="static/images/X_detection_2.png" alt="Method Overview" style="width:80%;">
-      <p style="text-align: left; margin-top: 0.5em;"> 
-  </div>
-  <!-- <b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. The hand-drawn sketch and natural image are encoded using this backbone, then the multimodal connector projects the sketch and image features to the input space of LLM. Finally, the sketch, image, and text tokens are concatenated and passed through the LLM, which generates the output. -->
-</p>
-<p>
-
-</p>
-  </div>
-</section>
-<!-- End Method Section -->
-
-<section class="section" id="method">
-  <div class="container is-max-desktop content">
-    
-    <h2 class="title">Qualitative Results for VQA</h2>
-    <div class="columns is-centered"> 
-      <img src="static/images/X_vqa_1.png" alt="Method Overview" style="width:80%;">
-      <!-- <img src="static/images/X_detection_2.png" alt="Method Overview" style="width:80%;"> -->
-      <p style="text-align: left; margin-top: 0.5em;"> 
-  </div>
-  <div class="columns is-centered"> 
-      <!-- <img src="static/images/X_detection_1.png" alt="Method Overview" style="width:80%;"> -->
-      <img src="static/images/X_vqa_2.png" alt="Method Overview" style="width:80%;">
-      <p style="text-align: left; margin-top: 0.5em;"> 
-  </div>
-  <div class="columns is-centered"> 
-      <!-- <img src="static/images/X_detection_1.png" alt="Method Overview" style="width:80%;"> -->
-      <img src="static/images/X_vqa_3.png" alt="Method Overview" style="width:80%;">
-      <p style="text-align: left; margin-top: 0.5em;"> 
-  </div>
-  <!-- <b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. The hand-drawn sketch and natural image are encoded using this backbone, then the multimodal connector projects the sketch and image features to the input space of LLM. Finally, the sketch, image, and text tokens are concatenated and passed through the LLM, which generates the output. -->
-</p>
-<p>
-
-</p>
-  </div>
-</section>
-
-
-<!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <div class="bibtex-header">
@@ -249,18 +86,13 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@InProceedings{gupta_2026_AAAI,
-        author    = {Gupta, Rishi and Karuppasamy, Mukilan and Marjit, Shyam and Tripathi, Aditay and Chakraborty, Anirban},
-        title     = {O3SLM: Open Weight, Open Data, and Open Vocabulary Sketch-Language Model},
-        booktitle = {Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
+      <pre id="bibtex-code"><code>@InProceedings{marjit_2026_ECCV,
+        author    = {Marjit, Shyam and Baiju, Dheeraj and Shikarkhane, Anuj and Sakthieswaran, Akhil and Paul, Sayak and Chakraborty, Anirban},
+        title     = {DynEval: Holistic Evaluations of T2I Generative Models in the Wild},
+        booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
         year      = {2026},
     }</code></pre>
     </div>
-    <!-- month     = {February}, -->
-        <!-- pages     = {3529-3538} -->
-</section>
-<!--End BibTex citation -->
-
-
-  </body>
-  </html>
+  </section>
+</body>
+</html>
