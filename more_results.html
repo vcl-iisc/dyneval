@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <meta name="title" content="DynEval: Additional Results">
-  <meta name="description" content="Additional DynEval benchmark, question generation, and failure-analysis results.">
+  <meta name="title" content="DynEval: Supplementary Results">
+  <meta name="description" content="Supplementary DynEval benchmark details, tiering, ablations, qualitative comparisons, and failure analysis.">
   <meta name="keywords" content="text-to-image evaluation, T2I, VLM-as-a-judge, image quality assessment, prompt-image alignment, GenDB, DynEvalInstruct, vision-language models">
   <meta name="author" content="Shyam Marjit, Dheeraj Baiju, Anuj Shikarkhane, Akhil Sakthieswaran, Sayak Paul, Anirban Chakraborty">
-  <title>DynEval Additional Results | VCL | IISc</title>
+  <title>DynEval Supplementary Results | VCL | IISc</title>
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
   <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -24,56 +24,134 @@
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop has-text-centered">
-        <h1 class="title is-2">DynEval: Additional Results</h1>
-        <p class="subtitle is-5">Benchmark details, dynamic question analysis, and T2I model failure attributes.</p>
+        <h1 class="title is-2">DynEval: Supplementary Results</h1>
+        <p class="subtitle is-5">Benchmark details, prompt/model tiering, ablations, and additional qualitative/failure-analysis figures.</p>
         <p><a href="./index.html">Back to project page</a></p>
       </div>
     </div>
   </section>
 
-  <section class="section hero is-light">
+  <section class="section hero is-light" id="supp-qualitative">
     <div class="container is-max-desktop content">
-      <h2 class="title">Additional Cross-Benchmark Results</h2>
-      <p>DynEval-4B remains strongest on the additional benchmark suite used in the paper, establishing the best SRCC and PLCC on GenEval2, TIIF-Bench, UniGenBench++, and T2I-CoReBench.</p>
-      <div class="table-container">
-        <table class="table is-striped is-hoverable is-fullwidth">
-          <thead><tr><th>Benchmark</th><th>DynEval-4B SRCC</th><th>DynEval-4B PLCC</th><th>Previous strongest SRCC</th></tr></thead>
-          <tbody>
-            <tr><td>GenEval2</td><td><b>0.7508</b></td><td><b>0.7132</b></td><td>0.7120</td></tr>
-            <tr><td>TIIF-Bench</td><td><b>0.5980</b></td><td><b>0.6298</b></td><td>0.5495</td></tr>
-            <tr><td>UniGenBench++</td><td><b>0.4958</b></td><td><b>0.5042</b></td><td>0.4102</td></tr>
-            <tr><td>T2I-CoReBench</td><td><b>0.4856</b></td><td><b>0.4716</b></td><td>0.4469</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <h2 class="title">Additional Qualitative Comparisons</h2>
+      <img src="static/images/dyneval_supp_qualitative.png" alt="Additional qualitative comparisons extending main Fig. 1" loading="lazy" style="width:100%; display:block; margin:0 auto 1.25rem auto;">
+      <p>These supplementary examples extend the main teaser comparison between DynEval and representative T2I evaluation methods including GenEval, TIFA, DPG-Bench, and EvalMuse. All scores are normalized to [0, 1]. The examples show that semantic-alignment methods can assign similar scores to images with substantially different perceptual quality, while DynEval tracks human judgment more closely by combining text-image alignment with image quality assessment.</p>
     </div>
   </section>
 
-  <section class="section hero">
+  <section class="section hero" id="benchmark-details">
     <div class="container is-max-desktop content">
-      <h2 class="title">Dynamic IQA Question Generation</h2>
-      <p>DynEval-4B generates more IQA questions as the number of objects increases, while maintaining strong agreement with the Qwen3-VL-235B teacher.</p>
+      <h2 class="title">Benchmark Dataset Details</h2>
+      <p>DynEval is evaluated on 11 benchmarks spanning compositional reasoning, attribute binding, long-form instruction following, multi-object interaction, text and symbol rendering, spatial reasoning, human preference evaluation, and fine-grained text-image alignment. Prompt length is measured in characters including whitespace and punctuation.</p>
       <div class="table-container">
-        <table class="table is-striped is-hoverable is-fullwidth">
-          <thead><tr><th>Objects in Image</th><th>Mean Questions</th><th>Median</th><th>Range</th><th>Coverage Ratio</th><th>BERTScore</th></tr></thead>
+        <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+          <thead><tr><th>Benchmark</th><th># Prompts</th><th># Pairs</th><th>Prompt Length Min</th><th>Max</th><th>Mean +/- Std</th><th>Images/T2I</th><th># T2I</th></tr></thead>
           <tbody>
-            <tr><td>1-5</td><td>14.2</td><td>14</td><td>5-25</td><td>0.885</td><td>0.899</td></tr>
-            <tr><td>6-10</td><td>32.2</td><td>33</td><td>24-40</td><td>0.824</td><td>0.871</td></tr>
-            <tr><td>11-15</td><td>47.6</td><td>45</td><td>36-61</td><td>0.752</td><td>0.817</td></tr>
-            <tr><td>16-20</td><td>66.6</td><td>63</td><td>47-100</td><td>0.696</td><td>0.772</td></tr>
+            <tr><td>T2I-CoReBench</td><td>1,080</td><td>4,320</td><td>238</td><td>2,064</td><td>764.62 +/- 324.51</td><td>1,080</td><td>4</td></tr>
+            <tr><td>TIIF-Bench</td><td>529</td><td>2,216</td><td>27</td><td>2,478</td><td>358.75 +/- 387.44</td><td>554</td><td>4</td></tr>
+            <tr><td>UniGenEval++</td><td>600</td><td>3,587</td><td>64</td><td>300</td><td>158.60 +/- 33.81</td><td>Mixed</td><td>6</td></tr>
+            <tr><td>LMM4LMM / EvalMI</td><td>2,086</td><td>10,080</td><td>16</td><td>1,876</td><td>98.26 +/- 145.32</td><td>420</td><td>24</td></tr>
+            <tr><td>RichHF</td><td>493</td><td>955</td><td>4</td><td>1,018</td><td>79.31 +/- 110.69</td><td>-</td><td>3</td></tr>
+            <tr><td>EvalMuse</td><td>989</td><td>10,796</td><td>6</td><td>335</td><td>68.62 +/- 45.04</td><td>Mixed</td><td>20</td></tr>
+            <tr><td>GenAI-Bench</td><td>1,600</td><td>9,600</td><td>14</td><td>192</td><td>67.42 +/- 26.89</td><td>1,600</td><td>6</td></tr>
+            <tr><td>TIFA</td><td>160</td><td>800</td><td>13</td><td>182</td><td>56.13 +/- 26.90</td><td>160</td><td>5</td></tr>
+            <tr><td>T2I-Eval-Bench</td><td>8,772</td><td>8,772</td><td>25</td><td>217</td><td>54.19 +/- 12.54</td><td>Mixed</td><td>3</td></tr>
+            <tr><td>GenEval2</td><td>800</td><td>3,200</td><td>13</td><td>93</td><td>50.82 +/- 18.41</td><td>800</td><td>4</td></tr>
+            <tr><td>GenEval</td><td>100</td><td>1,200</td><td>16</td><td>54</td><td>31.19 +/- 9.46</td><td>400</td><td>3</td></tr>
           </tbody>
         </table>
       </div>
+      <p>For GenEval2, TIIF-Bench, UniGenBench++, and T2I-CoReBench, the supplement describes a unified human annotation protocol. Prompts are decomposed into atomic semantic attributes, annotators label whether each attribute is satisfied, and the final human score is the average binary attribute label in [0, 1].</p>
     </div>
   </section>
 
-  <section class="section hero is-light">
+  <section class="section hero is-light" id="prompt-tiering">
     <div class="container is-max-desktop content">
-      <h2 class="title">Failure Attributes</h2>
-      <img src="static/images/dyneval_capability_analysis.png" alt="Fine-grained capability analysis of 36 T2I models" loading="lazy" style="width:100%; display:block; margin:0 auto 1.25rem auto;">
-      <p>The failure analysis shows persistent weaknesses in exact counting, compositional prompts with multiple attributes, human and animal structure, uncommon size relationships, perspective control, and text or symbol rendering. These challenges remain visible across model tiers, even as stronger models improve broad object grounding and scene understanding.</p>
-      <img src="static/images/dyneval_year_trend.png" alt="Average scores assigned to T2I models grouped by publication year" loading="lazy" style="width:65%; min-width:280px; display:block; margin:1.5rem auto;">
-      <p>Year-wise trends show why alignment-only metrics can overstate progress: newer models often satisfy object and attribute presence better, but still contain visual realism and structural errors that DynEval captures through its IQA branch.</p>
+      <h2 class="title">Prompt Complexity and Tiering</h2>
+      <p>GenDB samples from 1.8M DiffusionDB prompts using a heuristic complexity score over nine factors: prompt length, object/attribute counts, compositional density, artist/style attribution patterns, technical rendering and fidelity terminology, explicit detail descriptors, high-level style keywords, color specifications, and interaction or relational expressions. Prompt length and object/attribute counts receive weight 0.2; the remaining seven semantic factors receive weight 0.1. Prompts shorter than 30 characters are removed.</p>
+      <p>The selected 500K prompts are divided into tiers with \(\tau_1=200\) and \(\tau_2=100\): Tier-1 hard prompts satisfy \(H(p) \ge 200\), Tier-2 medium prompts satisfy \(100 \le H(p) &lt; 200\), and Tier-3 easy prompts fall below 100. Prompts are also categorized into 9 semantic dimensions and 42 subcategories using multi-label category assignment.</p>
+      <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+          <thead><tr><th>Tier</th><th>Representative Prompts</th></tr></thead>
+          <tbody>
+            <tr><td>Tier-1</td><td>Long, compositionally rich prompts such as an astronaut-helmet portrait in the style of Norman Rockwell; a detailed office scene with a girl petting a cat; and a cinematic closeup of school friends in a ski cafe with style, fashion, and composition constraints.</td></tr>
+            <tr><td>Tier-2</td><td>Moderate prompts such as futuristic mansion concept art, a puppet-string theater illustration, and a teddy bear in business casual clothing on a couch.</td></tr>
+            <tr><td>Tier-3</td><td>Shorter prompts such as a sad person surrounded by books, a dark painting of a couple looking at each other, and a puffin eating pastry in a diner.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Representative semantic categories include Object and Entity, Attribute Binding, Counting, Spatial, Relations, Actions, Scene Understanding, Text and Symbols, and Style and Aesthetics. Example subcategories include human present, animal present, atomic color binding, material binding, exact count, 2D spatial relation, object interaction, text in image, logo/sign rendering, fantasy content, and surreal scene.</p>
+    </div>
+  </section>
+
+  <section class="section hero" id="model-tiering">
+    <div class="container is-max-desktop content">
+      <h2 class="title">T2I Model Pool and Tiering</h2>
+      <p>DynEval uses 36 T2I models spanning 2022-2026, including early diffusion models, diffusion transformers, autoregressive image generation models, unified multimodal generators, recent open-source foundation models, and closed-source systems. Each model is evaluated on DynEval-1K, which contains 1,000 prompts covering 42 subcategories across 9 semantic dimensions.</p>
+      <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+          <thead><tr><th>Tier</th><th>Average +/- Std</th><th>Models and DynEval Scores</th></tr></thead>
+          <tbody>
+            <tr><td>Tier-1</td><td>0.872 +/- 0.041</td><td>GPT-Image-1.5 0.934; NanoBanana 0.915; FLUX.2-klein 0.883; FLUX.2-dev 0.866; FIBO 0.844; LongCat-Image 0.834; HiDream-I1 0.830.</td></tr>
+            <tr><td>Tier-2</td><td>0.739 +/- 0.039</td><td>Qwen-Image 0.793; Z-Image 0.789; GLM-Image 0.780; FLUX.1-dev 0.776; Sana 0.769; UniPic 0.768; Stable Diffusion 3.5 0.767; OmniGen2 0.765; In-Context LoRA 0.757; Bagel 0.755; OmniGen 0.741; Hunyuan-DiT 0.727; Show-o 0.711; X-Omni 0.706; Janus-Pro 0.696; Kolors 0.689; PixArt-alpha 0.685; Kandinsky 3 0.683; UniWorld-V1 0.682.</td></tr>
+            <tr><td>Tier-3</td><td>0.528 +/- 0.123</td><td>Playground v2.5 0.655; SSD-1B 0.613; DeepFloyd IF-XL 0.609; Emu3 0.597; SDXL-Turbo 0.594; Stable Diffusion XL 0.553; Stable Diffusion v2.1 0.523; Stable Diffusion v1.5 0.475; PixArt-sigma 0.425; LlamaGen 0.240.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Tiering supports tier-matched GenDB construction: Tier-1 models are paired with hard prompts, Tier-2 with medium prompts, and Tier-3 with easy prompts. This avoids wasting compute on trivially good outputs from strong models or catastrophic outputs from weak models on overly hard prompts, and produces richer failure cases for evaluator training.</p>
+    </div>
+  </section>
+
+  <section class="section hero is-light" id="curation-thresholds">
+    <div class="container is-max-desktop content">
+      <h2 class="title">DynEvalInstruct Curation Thresholds</h2>
+      <p>Teacher-generated T2IA and IQA scores are combined as \(S = 0.5 S_{\mathrm{T2IA}} + 0.5 S_{\mathrm{IQA}}\). Although the curation framework supports tier-specific thresholds \(\delta_i\), the implementation sets \(\delta_1=\delta_2=\delta_3=5\). Since 5 is the maximum possible score, this removes only near-perfect examples and retains samples with semantic, compositional, or perceptual discrepancies. Applying this filter to GenDB yields the final 250K DynEvalInstruct dataset.</p>
+    </div>
+  </section>
+
+  <section class="section hero" id="ablations">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Additional Ablations</h2>
+      <h3 class="title is-5">Teacher Model Selection</h3>
+      <p>The supplement selects the teacher by preferring a stricter evaluator on DynEval-1K. Lower scores indicate more willingness to penalize flawed generations. Qwen3-VL-235B is selected as the teacher because it provides the strongest strict-evaluator behavior among the considered candidates.</p>
+      <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+          <thead><tr><th>Teacher Candidate</th><th>DynEval Score</th></tr></thead>
+          <tbody>
+            <tr><td>GPT-5.2</td><td>0.863 +/- 0.216</td></tr>
+            <tr><td>Qwen3-VL-235B</td><td><b>0.850 +/- 0.192</b></td></tr>
+            <tr><td>Qwen2.5-VL-32B</td><td>0.929 +/- 0.076</td></tr>
+            <tr><td>InternVL-241B</td><td>0.900 +/- 0.100</td></tr>
+            <tr><td>InternVL-78B</td><td>0.920 +/- 0.084</td></tr>
+            <tr><td>Qwen3-VL-4B-Instruct</td><td>0.871 +/- 0.236</td></tr>
+            <tr><td>Qwen3-VL-8B-Instruct</td><td>0.971 +/- 0.076</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="title is-5">Training Data Scaling</h3>
+      <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+          <thead><tr><th>DynEvalInstruct Training Data</th><th>SRCC</th></tr></thead>
+          <tbody>
+            <tr><td>50K</td><td>0.687 +/- 0.225</td></tr>
+            <tr><td>100K</td><td>0.700 +/- 0.178</td></tr>
+            <tr><td>150K</td><td>0.750 +/- 0.065</td></tr>
+            <tr><td>200K</td><td>0.790 +/- 0.100</td></tr>
+            <tr><td>250K</td><td><b>0.800 +/- 0.025</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>SRCC improves consistently with more training data and begins to saturate around 250K samples, matching the selected DynEvalInstruct size.</p>
+    </div>
+  </section>
+
+  <section class="section hero is-light" id="failure-figures">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Best and Worst Models Within Each Tier</h2>
+      <img src="static/images/dyneval_best_tier_failures.png" alt="Best-performing model from each tier across prompt subcategories" loading="lazy" style="width:100%; display:block; margin:0 auto 1.25rem auto;">
+      <p>Best-performing models from each tier are GPT-Image-1.5, Qwen-Image, and Playground v2.5. Even these models degrade on challenging subcategories such as count multi objects, material binding, outdoor scenes, object manipulation, and text rendering.</p>
+      <img src="static/images/dyneval_worst_tier_failures.png" alt="Worst-performing model from each tier across prompt subcategories" loading="lazy" style="width:100%; display:block; margin:1.5rem auto 1.25rem auto;">
+      <p>Worst-performing models from each tier are HiDream-I1, UniWorld-V1, and LlamaGen. The failure patterns are broader and more severe, but exact counting, perspective reasoning, and text rendering remain consistently difficult regardless of overall tier strength.</p>
     </div>
   </section>
 

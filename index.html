@@ -18,7 +18,7 @@
   <meta property="og:title" content="DynEval: Holistic Evaluations of T2I Generative Models in the Wild">
   <meta property="og:description" content="DynEval is a dynamic evaluator for text-to-image models, jointly assessing prompt alignment and image quality with fine-grained T2IA and IQA reasoning.">
   <meta property="og:url" content="https://vcl-iisc.github.io/dyneval/">
-  <meta property="og:image" content="https://vcl-iisc.github.io/dyneval/static/images/dyneval_framework.png">
+  <meta property="og:image" content="https://vcl-iisc.github.io/dyneval/static/images/dyneval_teaser.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="DynEval: Holistic Evaluations of T2I Generative Models in the Wild - Research Preview">
@@ -34,7 +34,7 @@
   <meta name="twitter:creator" content="@vcl_iisc">
   <meta name="twitter:title" content="DynEval: Holistic Evaluations of T2I Generative Models in the Wild">
   <meta name="twitter:description" content="DynEval is a dynamic evaluator for text-to-image models, jointly assessing prompt alignment and image quality with fine-grained T2IA and IQA reasoning.">
-  <meta name="twitter:image" content="https://vcl-iisc.github.io/dyneval/static/images/dyneval_framework.png">
+  <meta name="twitter:image" content="https://vcl-iisc.github.io/dyneval/static/images/dyneval_teaser.png">
   <meta name="twitter:image:alt" content="DynEval: Holistic Evaluations of T2I Generative Models in the Wild - Research Preview">
 
   <!-- Academic/Research Specific -->
@@ -156,7 +156,7 @@
       "name": "European Conference on Computer Vision (ECCV)"
     },
     "url": "https://vcl-iisc.github.io/dyneval/",
-    "image": "https://vcl-iisc.github.io/dyneval/static/images/dyneval_framework.png",
+    "image": "https://vcl-iisc.github.io/dyneval/static/images/dyneval_teaser.png",
     "keywords": ["text-to-image evaluation", "VLM-as-a-judge", "image quality assessment", "prompt-image alignment", "vision-language models"],
     "abstract": "Recent advances in text-to-image generation have made realistic images easier to produce, but reliable large-scale evaluation remains challenging. DynEval jointly evaluates text-to-image alignment and image quality using GenDB, a 500K prompt-image dataset, DynEvalInstruct, a 250K instruction dataset distilled from structured teacher-VLM evaluation, and compact DynEval-2B and DynEval-4B evaluators. Across 11 benchmarks, DynEval shows stronger correlation with human judgments and enables fine-grained analysis of 36 T2I models across 42 subcategories and 9 semantic dimensions.",
     "citation": "@InProceedings{marjit_2026_ECCV, author = {Marjit, Shyam and Baiju, Dheeraj and Shikarkhane, Anuj and Sakthieswaran, Akhil and Paul, Sayak and Chakraborty, Anirban}, title = {DynEval: Holistic Evaluations of T2I Generative Models in the Wild}, booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)}, year = {2026}}",
@@ -281,10 +281,10 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div class="columns is-centered">
-        <img src="static/images/dyneval_framework.png" alt="Overview of the DynEval evaluation framework" loading="lazy" style="width:100%;"/>
+        <img src="static/images/dyneval_teaser.png" alt="Qualitative comparison of DynEval-4B with existing text-to-image evaluation methods" loading="lazy" style="width:100%;"/>
       </div>
       <p>
-        <b>DynEval</b> evaluates text-to-image generations through a dynamic framework that jointly measures text-to-image alignment (T2IA) and image quality assessment (IQA). Instead of relying on a fixed prompt set or a single scalar prediction, DynEval generates prompt-grounded and image-grounded verification questions, answers them with VQA-style scoring, and aggregates the evidence into a calibrated evaluation score.
+        <b>Qualitative comparison.</b> DynEval-4B is compared with representative T2I evaluation methods across multiple generators, with all scores normalized to [0, 1]. The examples highlight three recurring evaluator failures: detector-based methods can miss generated content under artistic or unusual visual distributions, visually strong images can be underrated, and distorted or semantically implausible images can be overrated. DynEval better follows human judgments by jointly evaluating text-image alignment and image quality.
       </p>
     </div>
   </div>
@@ -311,6 +311,13 @@
     <h2 class="title">GenDB and DynEvalInstruct</h2>
     <p>
       <b>GenDB</b> is a 500K prompt-image dataset built from real user prompts sampled from DiffusionDB. Prompts are ranked by a heuristic complexity score spanning prompt length, object and attribute counts, and seven additional semantic attributes, then split into easy, medium, and hard tiers. The paper also tiers 36 T2I models by capability on the DynEval-1K evaluation set and pairs prompts with models from matching tiers, making the generated data more likely to expose informative failure cases.
+    </p>
+    
+    <div style="text-align:center; margin: 1.5rem 0;">
+      <img src="static/images/dyneval_framework.png" alt="Overview of the DynEval evaluation framework" loading="lazy" style="width:100%; display:block; margin:0 auto;">
+    </div>
+    <p>
+      The DynEval evaluation framework starts from diverse prompt-image pairs and decomposes evaluation into text-image alignment and image quality. T2IA generates prompt-grounded verification questions and expected answers, while IQA builds a prompt-conditioned scene graph and object-level quality questions. The generated questions are scored with VQA-style evaluation to produce fine-grained evidence and a final score.
     </p>
     <div style="text-align:center; margin: 1.5rem 0;">
       <img src="static/images/dyneval_instruct_pipeline.png" alt="DynEvalInstruct generation and DynEval training pipeline" loading="lazy" style="width:100%; display:block; margin:0 auto;">
@@ -348,29 +355,66 @@
   <div class="container is-max-desktop content">
     <h2 class="title">Results</h2>
     <p>
-      DynEval is evaluated against 14 existing evaluators on 11 text-to-image benchmarks using SRCC and PLCC correlation with human judgments. DynEval-4B achieves state-of-the-art performance on 9 of the 11 benchmarks and ranks second on one additional benchmark, despite using fewer parameters than several larger 8B evaluators.
+      DynEval is evaluated against <b>14</b> existing evaluation methods on <b>11</b> text-to-image benchmarks. We report Spearman Rank Correlation Coefficient (SRCC) and Pearson Linear Correlation Coefficient (PLCC) between predicted evaluator scores and human annotations; higher values indicate stronger agreement with human judgment. DynEval is trained entirely without human annotations, yet it generalizes across diverse benchmark settings.
     </p>
+    <p>
+      Qualitatively, existing methods such as GenEval, DPG-Bench, EvalMuse, and TIFA often assign high scores to distorted images or deviate from human judgments. DynEval produces more consistent scores because it evaluates both semantic prompt faithfulness and visual quality.
+    </p>
+    <h3 class="title is-5">Main Human-Annotated Benchmarks</h3>
     <div class="table-container">
-      <table class="table is-striped is-hoverable is-fullwidth">
+      <table class="table is-striped is-hoverable is-fullwidth is-size-7">
         <thead>
-          <tr><th>Benchmark</th><th>DynEval-2B SRCC</th><th>DynEval-4B SRCC</th><th>DynEval-4B PLCC</th></tr>
+          <tr><th rowspan="2">Evaluator</th><th colspan="2">EvalMuse</th><th colspan="2">GenAI-B</th><th colspan="2">TIFA</th><th colspan="2">RichHF</th><th colspan="2">GenEval</th><th colspan="2">EvalMI</th><th colspan="2">T2I-Eval-B</th></tr>
+          <tr><th>SRCC</th><th>PLCC</th><th>SRCC</th><th>PLCC</th><th>SRCC</th><th>PLCC</th><th>SRCC</th><th>PLCC</th><th>SRCC</th><th>PLCC</th><th>SRCC</th><th>PLCC</th><th>SRCC</th><th>PLCC</th></tr>
         </thead>
         <tbody>
-          <tr><td>EvalMuse</td><td>0.7765</td><td><b>0.7932</b></td><td><b>0.7945</b></td></tr>
-          <tr><td>GenAI-Bench</td><td>0.5715</td><td><b>0.5945</b></td><td><b>0.5817</b></td></tr>
-          <tr><td>TIFA</td><td>0.7827</td><td><b>0.8022</b></td><td><b>0.8034</b></td></tr>
-          <tr><td>RichHF</td><td>0.5226</td><td>0.5457</td><td>0.5691</td></tr>
-          <tr><td>GenEval</td><td>0.5668</td><td>0.5894</td><td>0.6073</td></tr>
-          <tr><td>EvalMI</td><td>0.7346</td><td><b>0.7944</b></td><td><b>0.7889</b></td></tr>
-          <tr><td>T2I-Eval-Bench</td><td>0.4535</td><td><b>0.4857</b></td><td><b>0.4636</b></td></tr>
+          <tr><td>CLIPScore</td><td>0.2993</td><td>0.2933</td><td>0.1676</td><td>0.2030</td><td>0.3003</td><td>0.3086</td><td>0.0570</td><td>0.3024</td><td>0.0654</td><td>0.0985</td><td>0.2607</td><td>0.3072</td><td>0.0678</td><td>0.1260</td></tr>
+          <tr><td>BLIPv2Score</td><td>0.3583</td><td>0.3348</td><td>0.2734</td><td>0.2979</td><td>0.4287</td><td>0.4543</td><td>0.1425</td><td>0.3105</td><td>0.2669</td><td>0.3167</td><td>0.2900</td><td>0.3468</td><td>0.1223</td><td>0.1321</td></tr>
+          <tr><td>ImageReward</td><td>0.4655</td><td>0.4585</td><td>0.3400</td><td>0.3786</td><td>0.6211</td><td>0.6336</td><td>0.2747</td><td>0.3291</td><td>0.4149</td><td>0.4603</td><td>0.4991</td><td>0.5523</td><td>0.1349</td><td>0.1144</td></tr>
+          <tr><td>PickScore</td><td>0.4399</td><td>0.4328</td><td>0.3541</td><td>0.3631</td><td>0.4279</td><td>0.4342</td><td>0.3916</td><td>0.4133</td><td>0.2787</td><td>0.3015</td><td>0.4611</td><td>0.4692</td><td>0.2375</td><td>0.2440</td></tr>
+          <tr><td>HPSv2</td><td>0.3745</td><td>0.3657</td><td>0.1371</td><td>0.1693</td><td>0.3647</td><td>0.3804</td><td>0.1871</td><td>0.2577</td><td>0.3223</td><td>0.3580</td><td>0.5336</td><td>0.5525</td><td>0.2916</td><td>0.2990</td></tr>
+          <tr><td>VQAScore</td><td>0.4877</td><td>0.4841</td><td>0.5534</td><td>0.5175</td><td>0.6951</td><td>0.6585</td><td>0.4826</td><td>0.4094</td><td>0.5057</td><td>0.5040</td><td>0.6062</td><td>0.6118</td><td>0.3348</td><td>0.3570</td></tr>
+          <tr><td>GenEval</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>0.4753</td><td>0.4509</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+          <tr><td>FGA-BLIP2-OS</td><td>0.7742</td><td>0.7722</td><td>0.5637</td><td>0.5673</td><td>0.7604</td><td>0.7442</td><td>0.5123</td><td>0.5455</td><td>0.5170</td><td>0.5278</td><td>0.6724</td><td>0.6945</td><td>0.3582</td><td>0.3471</td></tr>
+          <tr><td>TIIF-Bench</td><td>-</td><td>-</td><td>0.4387</td><td>0.4020</td><td>0.6007</td><td>0.5776</td><td>0.4342</td><td>0.4292</td><td>0.5600</td><td>0.5447</td><td>0.4474</td><td>0.4256</td><td>0.3297</td><td>0.3016</td></tr>
+          <tr><td>T2I-Eval-Bench</td><td>-</td><td>-</td><td>0.4996</td><td>0.4773</td><td>0.6011</td><td>0.6246</td><td>0.5033</td><td>0.4990</td><td>0.5847</td><td>0.5610</td><td>0.4258</td><td>0.4075</td><td>0.3744</td><td>0.3629</td></tr>
+          <tr><td>UniGenBench++</td><td>-</td><td>-</td><td>0.4605</td><td>0.4441</td><td>0.6078</td><td>0.5892</td><td>0.5333</td><td>0.5172</td><td>0.5661</td><td>0.5494</td><td>0.4611</td><td>0.4554</td><td>0.3971</td><td>0.3818</td></tr>
+          <tr><td>T2I-CoReB (8B)</td><td>-</td><td>-</td><td>0.4614</td><td>0.4414</td><td>0.6126</td><td>0.6112</td><td>0.6024</td><td>0.5809</td><td>0.5626</td><td>0.5810</td><td>0.5583</td><td>0.5414</td><td>0.4035</td><td>0.3879</td></tr>
+          <tr><td>GenEval 2 (8B)</td><td>-</td><td>-</td><td>0.4817</td><td>0.4571</td><td>0.6824</td><td>0.6734</td><td>0.6311</td><td>0.6021</td><td>0.6044</td><td>0.6175</td><td>0.7245</td><td>0.7098</td><td>0.4222</td><td>0.4172</td></tr>
+          <tr><td>LongT2IBench</td><td>-</td><td>-</td><td>0.3747</td><td>0.3763</td><td>0.6775</td><td>0.6922</td><td>0.5174</td><td>0.5161</td><td>0.4544</td><td>0.5999</td><td>0.5056</td><td>0.5485</td><td>0.4781</td><td>0.4563</td></tr>
+          <tr><td><b>DynEval-2B</b></td><td>0.7765</td><td>0.7798</td><td>0.5715</td><td>0.5695</td><td>0.7827</td><td>0.7715</td><td>0.5226</td><td>0.5545</td><td>0.5668</td><td>0.5820</td><td>0.7346</td><td>0.7156</td><td>0.4535</td><td>0.4410</td></tr>
+          <tr><td><b>DynEval-4B</b></td><td><b>0.7932</b></td><td><b>0.7945</b></td><td><b>0.5945</b></td><td><b>0.5817</b></td><td><b>0.8022</b></td><td><b>0.8034</b></td><td>0.5457</td><td>0.5691</td><td>0.5894</td><td>0.6073</td><td><b>0.7944</b></td><td><b>0.7889</b></td><td><b>0.4857</b></td><td><b>0.4636</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="title is-5">Additional Benchmarks With New Human Annotations</h3>
+    <div class="table-container">
+      <table class="table is-striped is-hoverable is-fullwidth is-size-7">
+        <thead><tr><th>Evaluator</th><th colspan="2">GenEval2</th><th colspan="2">TIIF-B</th><th colspan="2">UniGenB++</th><th colspan="2">T2I-CoReB</th></tr><tr><th></th><th>SRCC</th><th>PLCC</th><th>SRCC</th><th>PLCC</th><th>SRCC</th><th>PLCC</th><th>SRCC</th><th>PLCC</th></tr></thead>
+        <tbody>
+          <tr><td>VQAScore</td><td>0.6223</td><td>0.5208</td><td>0.3728</td><td>0.3353</td><td>0.3109</td><td>0.2991</td><td>0.2469</td><td>0.2668</td></tr>
+          <tr><td>FGA-BLIP2-OS</td><td>0.3868</td><td>0.3750</td><td>0.3581</td><td>0.4437</td><td>0.3521</td><td>0.3457</td><td>0.3154</td><td>0.3075</td></tr>
+          <tr><td>TIIF-Bench</td><td>0.3432</td><td>0.3322</td><td>0.3917</td><td>0.3690</td><td>0.3254</td><td>0.3111</td><td>0.3602</td><td>0.3562</td></tr>
+          <tr><td>T2I-Eval-Bench</td><td>0.3904</td><td>0.3862</td><td>0.3392</td><td>0.3190</td><td>0.3473</td><td>0.3356</td><td>0.3811</td><td>0.3767</td></tr>
+          <tr><td>UniGenBench++</td><td>0.4602</td><td>0.4072</td><td>0.4788</td><td>0.4553</td><td>0.3888</td><td>0.3752</td><td>0.3671</td><td>0.3454</td></tr>
+          <tr><td>T2I-CoReB (8B)</td><td>0.4813</td><td>0.4955</td><td>0.5196</td><td>0.5671</td><td>0.4004</td><td>0.3849</td><td>0.4469</td><td>0.4352</td></tr>
+          <tr><td>GenEval2 (8B)</td><td>0.7120</td><td>0.7017</td><td>0.5495</td><td>0.6028</td><td>0.4102</td><td>0.3858</td><td>0.4435</td><td>0.4315</td></tr>
+          <tr><td><b>DynEval-4B</b></td><td><b>0.7508</b></td><td><b>0.7132</b></td><td><b>0.5980</b></td><td><b>0.6298</b></td><td><b>0.4958</b></td><td><b>0.5042</b></td><td><b>0.4856</b></td><td><b>0.4716</b></td></tr>
         </tbody>
       </table>
     </div>
     <p>
-      Across the complete benchmark suite, DynEval-4B improves over prior evaluators by a relative margin of <b>+4.77%</b> on average, with <b>+7.61%</b> relative improvement on benchmarks where it sets a new state of the art. Scaling from 2B to 4B parameters consistently improves SRCC, with an average relative gain of <b>+4.62%</b>.
+      DynEval-4B achieves state-of-the-art performance on <b>9 of 11</b> benchmarks and ranks second on one additional benchmark. Averaged across all benchmarks, it improves over previous best evaluators by <b>+4.77%</b>, and the relative gain rises to <b>+7.61%</b> on benchmarks where it sets a new state of the art. The largest gains occur on EvalMI (+9.65%), GenAI-Bench (+5.46%), UniGenBench++ (+20.87%), and TIIF-Bench (+8.83%). On RichHF and GenEval, DynEval-4B trails larger 8B evaluators while using roughly half as many parameters.
+    </p>
+    <p>
+      Scaling from DynEval-2B to DynEval-4B consistently improves performance across the main benchmarks, with an average relative SRCC gain of <b>+4.62%</b>. The largest improvements appear on EvalMI (+8.14%) and T2I-Eval-Bench (+7.10%), while smaller but consistent improvements also appear on EvalMuse (+2.15%).
+    </p>
+    <h3 class="title is-5">Dynamic Question Generation</h3>
+    <p>
+      DynEval-4B generates IQA questions whose count scales with scene complexity. For images with 1-5 objects it generates 14.2 questions on average, increasing to 66.6 questions for 16-20 objects. Coverage ratio and BERTScore against the Qwen3-VL-235B teacher remain high, showing that the student preserves much of the teacher's question coverage and semantic intent.
     </p>
     <p style="text-align:center; margin-top: 1rem;">
-      <a href="./more_results.html" target="_blank">Additional benchmark and failure-analysis details</a>
+      <a href="./more_results.html" target="_blank">Supplementary details, ablations, and additional qualitative figures</a>
     </p>
   </div>
 </section>
