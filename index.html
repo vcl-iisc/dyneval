@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="DynEval: Holistic Evaluations of T2I Generative Models in the Wild">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="T2I Evaluation, VLM-as-a-judge">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="Shyam Marjit, Dheeraj Baiju, Anuj Shikarkhane, Akhil Sakthieswaran, Sayak Paul, Anirban Chakraborty">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="VCL, IISc Bangalore">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PAPER_TITLE">
+  <meta name="citation_author" content="Rishi Gupta, Mukilan Karuppasamy, Shyam Marjit, Aditay Tripathi, Anirban Chakraborty">
+  <meta name="citation_author" content="Rishi Gupta, Mukilan Karuppasamy, Shyam Marjit, Aditay Tripathi, Anirban Chakraborty">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="AAAI">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>DynEval | VCL | IISc</title>
+  
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "TTRV",
+    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- TODO: Replace with your paper title -->
+            <h2 class="title is-1 publication-title">\(\textbf{\(\texttt{O3SLM}\)}\): Open Weight, Open Data, and Open Vocabulary Sketch-Language Model</h2>
+            <div class="is-size-5 publication-authors">
+              <!-- TODO: Replace with your paper authors and their personal links -->
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/rishi-gupta-96a314202/" target="_blank">Rishi Gupta</a><sup></sup>,</span>
+                <span class="author-block">
+                  <a href="https://mukil07.github.io" target="_blank">Mukilan Karuppasamy</a><sup>*</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=tg4LJ94AAAAJ&hl=en" target="_blank">Shyam Marjit</a><sup>*</sup>,</span>
+              <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=rDCT8xQAAAAJ&hl=en" target="_blank">Aditay Tripathi</a><sup></sup>,</span>
+              <span class="author-block">
+                    <a href="https://anirbanchakraborty.github.io/" target="_blank">Anirban Chakraborty</a><sup></sup></span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- TODO: Replace with your institution and conference/journal info -->
+                    <span class="author-block"><sup></sup>Visual Computing Lab, IISc Bangalore</span>
+                    <!-- <span class="author-block"><sup>*</sup>Equal Contribution</span> -->
+                    <!-- TODO: Remove this line if no equal contribution -->
+                    <span class="eql-cntrb" style="font-size: 0.95em";><medium><br><sup>*</sup>Indicates Equal Contribution</medium></span>
+                    <!-- <span class="eql-cntrb" style="font-size: 0.95em";><medium><sup>†</sup>Contributed in an Advisory Capacity</medium></span><br> -->
+                     <br>
+                    <span class="paper-block"><b style="color:#f41c1c">ECCV 2026</b> </span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- TODO: Update with your arXiv paper ID -->
+
+                      <span class="link-block">
+                        <a href="https://vcl-iisc.github.io/O3SLM/" target="_blank"
+                          class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" 
+                                alt="YouTube" 
+                                style="width: 50px; height: 50px; vertical-align: middle;">
+                          </span>
+                          <span>YouTube</span>
+                        </a>
+                      </span>
+
+
+                      <span class="link-block">
+                        <a href="https://vcl-iisc.github.io/O3SLM/" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                  <span class="link-block">
+                    <a href="https://huggingface.co/datasets/anirban-iisc/SketchVCL" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" 
+                            alt="Hugging Face" 
+                            style="width: 20px; height: 20px; vertical-align: middle;">
+                      </span>
+                      <span>Dataset</span>
+                    </a>
+                  </span>
+
+                  <!-- TODO: Replace with your GitHub repository URL -->
+                  <span class="link-block">
+                    <a href="https://github.com/vcl-iisc/O3SLM_code" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- TODO: Update with your arXiv paper ID -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2511.14368" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Pre-print including Suppl. Materials</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+    <div class="columns is-centered"> 
+      <!-- TODO: Replace with your teaser video -->
+      <img src="static/images/SketchLLM-Teaser.png" alt="First research result visualization" loading="lazy" style="width:100%;"/>
+      </div>
+      <!-- TODO: Replace with your video description -->
+      <p>
+        <b>Capabilities of our model</b> - \(\texttt{O3SLM}\). Our model is the first Large Vision-Language Model (LVLM) to demonstrate advanced alignment between sketches, images, and text—where existing LVLMs consistently fail. 
+        Through extensive pretraining on our proposed \(\texttt{SketchVCL}\) dataset, the model develops a robust understanding of crude hand-drawn sketches and how they relate to the visual and textual modalities in which current LVLMs already excel. 
+        This training enables cross-modal transfer, allowing the model to handle fine-grained queries using sketch-text pairs, even though it was originally trained with sketches alone. \(\texttt{O3SLM}\) is trained across multiple tasks, including Visual Question Answering (VQA), Sketch-based Image Retrieval (SBIR), sketch-based counting, and sketch-based object detection.
+      </p>
+    
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+
+          
+
+          <p>
+          While Large Vision Language Models (LVLMs) are increasingly deployed in real-world applications, their ability to interpret abstract visual inputs remains limited. Specifically, they struggle to comprehend hand-drawn sketches, a modality that offers an intuitive means of expressing concepts that are difficult to describe textually. 
+          </p>
+          <p> 
+          We identify the primary bottleneck as the absence of a large-scale dataset that jointly models sketches, photorealistic images, and corresponding natural language instructions. To address this, we present two key contributions: <br>
+          (1) a new, large-scale dataset of image-sketch-instruction triplets designed to facilitate both pretraining and instruction tuning
+          <br>(2) \({\texttt{O3SLM}}\), an LVLM trained on this dataset. Comprehensive evaluations on multiple sketch-based tasks: (a) object localization, (b) counting, (c) image retrieval \(\textit{i.e.}\) (SBIR and fine-grained SBIR), and (d) visual question answering (VQA); while incorporating the three existing sketch datasets, namely QuickDraw!, Sketchy, and Tu Berlin, along with our generated <b>\(\texttt{SketchVCL}\)</b> dataset, show that \(\texttt{O3SLM}\) achieves state-of-the-art performance, substantially outperforming existing LVLMs in sketch comprehension and reasoning.
+
+          </p>
+
+
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Method Section -->
+<!-- End Method Section -->
+
+
+<!-- <section class="section hero" id="result">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Method</h2>
+      <img src="static/images/SketchLLM-Model_Diag.png" alt="Experimental Results" style="width:80%;">
+      <p>
+        <b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. The hand-drawn sketch and natural image are encoded using this backbone, then the multimodal connector projects the sketch and image features to the input space of LLM. Finally, the sketch, image, and text tokens are concatenated and passed through the LLM, which generates the output.
+      </p>
+
+    </div>
+
+  </div>
+</section> -->
+
+<section class="section hero" id="result">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Method</h2>
+
+    <div style="text-align: center;">
+      <img src="static/images/SketchLLM-Model_Diag.png" 
+           alt="Experimental Results" 
+           style="width:80%; display:block; margin:0 auto;">
+    </div>
+    <br>
+    <p>
+      <b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. 
+      The hand-drawn sketch and natural image are encoded using this backbone, 
+      then the multimodal connector projects the sketch and image features to 
+      the input space of LLM. Finally, the sketch, image, and text tokens are concatenated 
+      and passed through the LLM, which generates the output.
+    </p>
+  </div>
+</section>
+<!-- End Method Section -->
+
+
+
+<!-- Start of Dataset Section -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <!-- <div class="section-title has-text-centered is-centered"></div> -->
+    <!-- <h2 class="title is-3" style="display: flex; justify-content: center; align-items: center;"></h2> -->
+     <!-- <h2 class="title is-3 mathvista" style="display: flex; justify-content: center; align-items: center;">👻 DiffuseKronA vs. LoRA-DreamBooth</h2> -->
+    <h2 class="title">\(\texttt{SketchVCL}\) Dataset</h2>
+    <div class="content has-text-justified">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <!-- <h3 class="title is-5">(1) Pseudo-label prediction Accuracy Difference</h3> -->
+           <!-- <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="./static/images/Pseudo-label.png" width="100%" height="100%">
+          </div> -->
+          <img src="./static/images/data_pipeline.png" width="100%" height="80%">
+          <br>
+            <p>
+            ▷ <b>Automated Large-Scale Sketch Generation Pipeline. </b> For each object instance, we use the<code><a href="https://github.com/facebookresearch/sam2" target="_blank">SAM2</a></code>-generated segmentation maps to mask the background and 
+            pass the foreground through<code><a href="https://mtli.github.io/sketch/" target="_blank">Pix2Pix</a></code>for sketch generation. These sketches are enhanced using edge
+            detection using morphological gradients. The final sketch is an aggregation of the edges and the Pix2Pix sketch.
+          </p>
+          <br>
+          
+          
+        </div>
+      </div>
+      
+
+      
+      
+      <div class="column">
+        <!-- <h3 class="title is-5"> (2) Entropy Density of Clients Predictions</h3> -->
+        <div class="columns is-centered">
+          <div class="column content">
+            <img src="./static/images/data_info_table.png" width="100%" height="80%">
+            <p>
+              <br>
+              <!-- ▷ <code>Entropy density of the clients predictions on Office-Home</code> dataset, calculated via (refer to Eq. 14 of the main paper), exhibiting skewness (\(\gamma\)); with negative \(\gamma\) (e.g., \(\gamma=-0.1\)) indicating higher entropy and 
+              lower prediction confidence, while positive \(\gamma\) (e.g., \(\gamma\) = 0.15) reflecting lower entropy and higher prediction confidence. -->
+            ▷ <b>Training Data Composition.</b> The distribution of data for each task and corresponding datasets is shown. The total pretraining size is <code>600k</code>, 
+            while the total finetuning size is <code>215k</code>. Instruction tuning data is curated based on the downstream tasks. Detailed instruction formatting prompts for each task are provided in the supplementary.
+            </p>
+            
+          </div>
+
+        </div>
+      </div>
+
+      
+
+    </div>
+
+    <code>
+        <span style="color: rgb(218, 15, 57);">  
+        ▷ <a href="https://github.com/vcl-iisc/O3SLM/blob/master/static/images/SketchVCL-sketches.pdf" target="_blank">See sketch samples from SketchVCL dataset, generated using our proposed sketch-generation pipeline.</a></code> 
+      </span>
+      </code>  
+
+  </div>
+</section>
+<!-- End Dataset Section -->
+
+<!-- Result Section -->
+<section class="section hero" id="result">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Results</h2>
+      <img src="static/images/counting_table.png" alt="Experimental Results" style="width:100%;">
+      <p>
+      ▷ <b>Evaluation on Sketch-Based Counting.</b> We evaluate performance on images from<code>COCO</code>and<code>PixMo-Count</code>datasets. COCO presents a more challenging setting, with a greater number of object categories per image, forcing
+the model to rely more on the sketches as a query. We sample sketches from four datasets representing various levels of abstraction and difficulty of hand-drawn sketches, for example QuickDraw! is known to have highly abstract and often incomplete
+sketches.
+<code>†</code> indicates sketch datasets which are unseen by our model during training, they assess our model’s ability to generalize to sketch styles.
+      </p>
+
+      <br>
+      <img src="static/images/detection_task.png" alt="Experimental Results" style="width:100%;">
+      <!-- <p class="caption">Figure 2: Qualitative results comparing our method against baseline approaches. Our approach achieves more accurate and consistent predictions.</p> -->
+      <p>
+        ▷ <b>Sketch-Based Object Detection.</b> To evaluate the sketch-based object detection on images<code>COCO val2017</code>and sketches from four different datasets, specifically:<code>Sketchy</code>,<code>QuickDraw!</code>,<code>TU-Berlin</code>, and<code>SketchVCL-C</code>. We evaluate on TUBerlin and Sketchy datasets.<code>†</code>indicates sketch datasets which are unseen by our model during training, they assess our model’s
+ability to generalize to sketch styles.
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- End Result Section -->
+
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+        <div class="content has-text-justified">
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <img src="./static/images/sbir_result_table.png" width="100%" height="100%">
+            <p>
+            ▷ <b>Skecth-based Image Retrieval (SBIR) performance on Sketchy.</b> The substantial gains indicate that although original LLaVA has very limited sketch understanding, our training data and methodology align sketches and text in O3SLM.
+            </p>
+          <!-- </div>
+        </div> -->
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <img src="./static/images/motivation_fig.png" width="100%" height="100%">
+            <!-- <p>
+              ▷ <code>Effect of varying threshold</code> \(\tau_{init}\) (refer to Eq. 16 of the main paper) on the average accuracy attained by all the clients when the training is initialized with the server model pre-trained on Art, Clipart, Product, and Real-World.                
+            </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+        <div class="content has-text-justified">
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+            ▷ <code>Qualitative Results for SBIR.</code>
+
+            </p>
+            <img src="./static/images/X_sbir_1.png" width="100%" height="100%">
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <img src="./static/images/X_sbir_2.png" width="100%" height="100%">
+            <!-- <p>
+              ▷ <code>Effect of varying threshold</code> \(\tau_{init}\) (refer to Eq. 16 of the main paper) on the average accuracy attained by all the clients when the training is initialized with the server model pre-trained on Art, Clipart, Product, and Real-World.                
+            </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align: center;"> 
+      <code>
+        <span style="color: rgb(218, 15, 57);">  
+        ▷ <a href="./more_results.html" target="_blank">More qualitative results for Detection and VQA task.</a></code> 
+      </span>
+      </code>
+    </p>
+    
+      
+  </div>
+</section>
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@InProceedings{gupta_2026_AAAI,
+        author    = {Gupta, Rishi and Karuppasamy, Mukilan and Marjit, Shyam and Tripathi, Aditay and Chakraborty, Anirban},
+        title     = {DynEval: Holistic Evaluations of T2I Generative Models in the Wild},
+        booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+        year      = {2026},
+    }</code></pre>
+    </div>
+    <!-- month     = {February}, -->
+        <!-- pages     = {3529-3538} -->
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
