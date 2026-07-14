@@ -902,13 +902,6 @@
     <p>
       DynEval-4B analyzes 36 T2I models over 42 subcategories and 9 semantic dimensions. The strongest models improve basic object grounding, scene understanding, and standard spatial reasoning, but all tiers still struggle with exact object counting, human and animal structures, uncommon size relationships, perspective-dependent prompts, and faithful text or symbol generation.
     </p>
-    <figure class="paper-figure paper-figure-narrow">
-      <img src="static/images/dyneval_year_trend.png" alt="Average evaluator scores by T2I model publication year" loading="lazy" style="width:65%; min-width:280px; display:block; margin:0 auto;">
-      <figcaption><b>Figure 5.</b> Average scores assigned by existing methods and DynEval-4B to T2I models grouped by publication year.</figcaption>
-    </figure>
-    <p>
-      Compared with alignment-centric evaluators, DynEval gives a more calibrated view of model progress over time because it jointly evaluates prompt faithfulness and visual realism. This makes it better suited for diagnosing visually plausible but semantically wrong outputs, as well as semantically aligned images with local artifacts or structural distortions.
-    </p>
     <div class="leaderboard-heading" id="leaderboard">
       <div>
         <h2 class="title">DynEval-1K Leaderboard</h2>
@@ -964,6 +957,13 @@
       </table>
     </div>
     <p class="leaderboard-note">Tier averages report mean ± standard deviation, following Table S9 of the supplementary material.</p>
+    <figure class="paper-figure paper-figure-narrow leaderboard-followup-figure">
+      <img src="static/images/dyneval_year_trend.png" alt="Average evaluator scores by T2I model publication year" loading="lazy" style="width:65%; min-width:280px; display:block; margin:0 auto;">
+      <figcaption><b>Figure 5.</b> Average scores assigned by existing methods and DynEval-4B to T2I models grouped by publication year.</figcaption>
+    </figure>
+    <p>
+      Compared with alignment-centric evaluators, DynEval gives a more calibrated view of model progress over time because it jointly evaluates prompt faithfulness and visual realism. This makes it better suited for diagnosing visually plausible but semantically wrong outputs, as well as semantically aligned images with local artifacts or structural distortions.
+    </p>
   </div>
 </section>
 

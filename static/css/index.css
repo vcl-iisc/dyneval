@@ -179,7 +179,7 @@ body {
   background: #e2e8f0 !important;
   border: 0 !important;
   border-bottom: 2px solid #94a3b8 !important;
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   text-align: left;
   white-space: nowrap;
 }
@@ -264,6 +264,10 @@ body {
   color: var(--text-secondary);
   font-size: 0.78rem;
   text-align: center;
+}
+
+.leaderboard-followup-figure {
+  margin-top: 2.75rem;
 }
 
 /* Interactive qualitative comparison (Figure 1) */
