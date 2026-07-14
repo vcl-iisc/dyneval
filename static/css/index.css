@@ -296,6 +296,7 @@ body {
 }
 
 .comparison-carousel {
+  position: relative;
   outline: none;
 }
 
@@ -584,6 +585,9 @@ body {
 }
 
 .carousel-arrow {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -595,13 +599,22 @@ body {
   border-radius: 50%;
   cursor: pointer;
   transition: var(--transition);
+  transform: translateY(-50%);
+}
+
+.carousel-controls .carousel-arrow:first-child {
+  left: -1.15rem;
+}
+
+.carousel-controls .carousel-arrow:last-child {
+  right: -1.15rem;
 }
 
 .carousel-arrow:hover {
   color: #ffffff;
   background: var(--primary-color);
   border-color: var(--primary-color);
-  transform: translateY(-1px);
+  transform: translateY(-50%) scale(1.06);
 }
 
 .carousel-dots {
@@ -669,6 +682,19 @@ body {
 
   .comparison-grid {
     grid-template-columns: 1fr;
+  }
+
+  .comparison-carousel {
+    padding-right: 2.65rem;
+    padding-left: 2.65rem;
+  }
+
+  .carousel-controls .carousel-arrow:first-child {
+    left: 0;
+  }
+
+  .carousel-controls .carousel-arrow:last-child {
+    right: 0;
   }
 
   .comparison-prompt {
