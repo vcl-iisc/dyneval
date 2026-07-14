@@ -119,6 +119,76 @@ function setupVideoCarouselAutoplay() {
     });
 }
 
+// Interactive Figure 1 comparison carousel
+function setupFigureOneExplorer() {
+    const explorer = document.getElementById('figure1-explorer');
+    if (!explorer) return;
+
+    const carousel = explorer.querySelector('.comparison-carousel');
+    const slides = Array.from(explorer.querySelectorAll('[data-figure-slide]'));
+    const dots = Array.from(explorer.querySelectorAll('[data-figure-dot]'));
+    const previousButton = explorer.querySelector('[data-figure-prev]');
+    const nextButton = explorer.querySelector('[data-figure-next]');
+    const status = explorer.querySelector('.carousel-status');
+    let currentSlide = 0;
+    let touchStartX = null;
+
+    if (!carousel || slides.length === 0) return;
+
+    function showSlide(index) {
+        currentSlide = (index + slides.length) % slides.length;
+
+        slides.forEach((slide, slideIndex) => {
+            const isActive = slideIndex === currentSlide;
+            slide.classList.toggle('is-active', isActive);
+            slide.setAttribute('aria-hidden', String(!isActive));
+        });
+
+        dots.forEach((dot, dotIndex) => {
+            const isActive = dotIndex === currentSlide;
+            dot.classList.toggle('is-active', isActive);
+            dot.setAttribute('aria-selected', String(isActive));
+        });
+
+        if (status) {
+            status.textContent = `${currentSlide + 1} / ${slides.length}`;
+        }
+    }
+
+    previousButton?.addEventListener('click', () => showSlide(currentSlide - 1));
+    nextButton?.addEventListener('click', () => showSlide(currentSlide + 1));
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+    });
+
+    carousel.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            showSlide(currentSlide - 1);
+        }
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            showSlide(currentSlide + 1);
+        }
+    });
+
+    carousel.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (event) => {
+        if (touchStartX === null) return;
+        const distance = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(distance) > 45) {
+            showSlide(currentSlide + (distance < 0 ? 1 : -1));
+        }
+        touchStartX = null;
+    }, { passive: true });
+
+    showSlide(0);
+}
+
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
 
@@ -138,5 +208,6 @@ $(document).ready(function() {
     
     // Setup video autoplay for carousel
     setupVideoCarouselAutoplay();
+    setupFigureOneExplorer();
 
 })
