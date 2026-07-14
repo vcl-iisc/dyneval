@@ -297,6 +297,8 @@ body {
 
 .comparison-carousel {
   position: relative;
+  padding-right: 3.25rem;
+  padding-left: 3.25rem;
   outline: none;
 }
 
@@ -603,11 +605,11 @@ body {
 }
 
 .carousel-controls .carousel-arrow:first-child {
-  left: -1.15rem;
+  left: 0;
 }
 
 .carousel-controls .carousel-arrow:last-child {
-  right: -1.15rem;
+  right: 0;
 }
 
 .carousel-arrow:hover {
@@ -689,8 +691,8 @@ body {
   }
 
   .comparison-carousel {
-    padding-right: 2.65rem;
-    padding-left: 2.65rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
   }
 
   .carousel-controls .carousel-arrow:first-child {
