@@ -152,6 +152,7 @@ body {
 
 .figure-explorer-header .title {
   margin: 0.2rem 0 0.55rem !important;
+  text-align: center;
   white-space: nowrap;
 }
 
