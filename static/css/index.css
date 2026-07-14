@@ -146,7 +146,10 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   gap: 1.5rem;
+  margin-top: 3rem;
   margin-bottom: 1.25rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
 }
 
 .leaderboard-heading .title {
@@ -183,9 +186,10 @@ body {
 
 .leaderboard-table thead th {
   padding: 0.9rem 1rem !important;
-  color: #ffffff;
-  background: #0f172a;
+  color: #0f172a !important;
+  background: #e2e8f0 !important;
   border: 0 !important;
+  border-bottom: 2px solid #94a3b8 !important;
   font-size: 0.78rem;
   text-align: left;
   white-space: nowrap;
