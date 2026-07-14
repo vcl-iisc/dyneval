@@ -112,6 +112,30 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+.paper-figure {
+  margin: 1.75rem 0 2rem;
+  text-align: center;
+}
+
+.paper-figure img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+}
+
+.paper-figure figcaption {
+  max-width: 920px;
+  margin: 0.85rem auto 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.section-subtitle {
+  margin-top: 3rem !important;
+}
+
 
 /* Publication Content Styling */
 .publication-title {
@@ -748,7 +772,6 @@ a:focus {
     box-shadow: none !important;
   }
 }
-
 
 
 

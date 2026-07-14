@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
   <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/index.js"></script>
 </head>
@@ -149,7 +149,7 @@
     <div class="container is-max-desktop content">
       <h2 class="title">Best and Worst Models Within Each Tier</h2>
       <img src="static/images/dyneval_best_tier_failures.png" alt="Best-performing model from each tier across prompt subcategories" loading="lazy" style="width:100%; display:block; margin:0 auto 1.25rem auto;">
-      <p>Best-performing models from each tier are GPT-Image-1.5, Qwen-Image, and Playground v2.5. Even these models degrade on challenging subcategories such as count multi objects, material binding, outdoor scenes, object manipulation, and text rendering.</p>
+      <p>Best-performing models from each tier are GPT-Image-1.5, Qwen-Image, and Playground v2.5. Even these models show noticeable weaknesses on challenging subcategories such as human present, count multi objects, size binding, perspective, anti-realism, and text in image.</p>
       <img src="static/images/dyneval_worst_tier_failures.png" alt="Worst-performing model from each tier across prompt subcategories" loading="lazy" style="width:100%; display:block; margin:1.5rem auto 1.25rem auto;">
       <p>Worst-performing models from each tier are HiDream-I1, UniWorld-V1, and LlamaGen. The failure patterns are broader and more severe, but exact counting, perspective reasoning, and text rendering remain consistently difficult regardless of overall tier strength.</p>
     </div>
@@ -164,12 +164,15 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@InProceedings{marjit_2026_ECCV,
-        author    = {Marjit, Shyam and Baiju, Dheeraj and Shikarkhane, Anuj and Sakthieswaran, Akhil and Paul, Sayak and Chakraborty, Anirban},
-        title     = {DynEval: Holistic Evaluations of T2I Generative Models in the Wild},
-        booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
-        year      = {2026},
-    }</code></pre>
+      <pre id="bibtex-code"><code>@misc{marjit2026dynevalholisticevaluationst2i,
+      title={DynEval: Holistic Evaluations of T2I Generative Models in the Wild},
+      author={Shyam Marjit and Dheeraj Baiju and Anuj Shikarkhane and Akhil Sakthieswaran and Sayak Paul and Anirban Chakraborty},
+      year={2026},
+      eprint={2607.11199},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2607.11199},
+}</code></pre>
     </div>
   </section>
 </body>
