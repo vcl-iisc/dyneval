@@ -124,69 +124,96 @@ function setupFigureOneExplorer() {
     const explorer = document.getElementById('figure1-explorer');
     if (!explorer) return;
 
-    const carousel = explorer.querySelector('.comparison-carousel');
-    const slides = Array.from(explorer.querySelectorAll('[data-figure-slide]'));
-    const dots = Array.from(explorer.querySelectorAll('[data-figure-dot]'));
-    const previousButton = explorer.querySelector('[data-figure-prev]');
-    const nextButton = explorer.querySelector('[data-figure-next]');
-    const status = explorer.querySelector('.carousel-status');
-    let currentSlide = 0;
-    let touchStartX = null;
+    const evaluatorTabs = Array.from(explorer.querySelectorAll('[data-evaluator-tab]'));
+    const evaluatorPanels = Array.from(explorer.querySelectorAll('[data-evaluator-panel]'));
 
-    if (!carousel || slides.length === 0) return;
+    function initializeCarousel(carousel) {
+        const slides = Array.from(carousel.querySelectorAll('[data-figure-slide]'));
+        const dots = Array.from(carousel.querySelectorAll('[data-figure-dot]'));
+        const previousButton = carousel.querySelector('[data-figure-prev]');
+        const nextButton = carousel.querySelector('[data-figure-next]');
+        const status = carousel.querySelector('.carousel-status');
+        let currentSlide = 0;
+        let touchStartX = null;
 
-    function showSlide(index) {
-        currentSlide = (index + slides.length) % slides.length;
+        if (slides.length === 0) return;
 
-        slides.forEach((slide, slideIndex) => {
-            const isActive = slideIndex === currentSlide;
-            slide.classList.toggle('is-active', isActive);
-            slide.setAttribute('aria-hidden', String(!isActive));
-        });
+        function showSlide(index) {
+            currentSlide = (index + slides.length) % slides.length;
 
-        dots.forEach((dot, dotIndex) => {
-            const isActive = dotIndex === currentSlide;
-            dot.classList.toggle('is-active', isActive);
-            dot.setAttribute('aria-selected', String(isActive));
-        });
+            slides.forEach((slide, slideIndex) => {
+                const isActive = slideIndex === currentSlide;
+                slide.classList.toggle('is-active', isActive);
+                slide.setAttribute('aria-hidden', String(!isActive));
+            });
 
-        if (status) {
-            status.textContent = `${currentSlide + 1} / ${slides.length}`;
+            dots.forEach((dot, dotIndex) => {
+                const isActive = dotIndex === currentSlide;
+                dot.classList.toggle('is-active', isActive);
+                dot.setAttribute('aria-selected', String(isActive));
+            });
+
+            if (status) {
+                status.textContent = `${currentSlide + 1} / ${slides.length}`;
+            }
         }
+
+        previousButton?.addEventListener('click', () => showSlide(currentSlide - 1));
+        nextButton?.addEventListener('click', () => showSlide(currentSlide + 1));
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+
+        carousel.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                showSlide(currentSlide - 1);
+            }
+            if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                showSlide(currentSlide + 1);
+            }
+        });
+
+        carousel.addEventListener('touchstart', (event) => {
+            touchStartX = event.changedTouches[0].clientX;
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', (event) => {
+            if (touchStartX === null) return;
+            const distance = event.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(distance) > 45) {
+                showSlide(currentSlide + (distance < 0 ? 1 : -1));
+            }
+            touchStartX = null;
+        }, { passive: true });
+
+        showSlide(0);
     }
 
-    previousButton?.addEventListener('click', () => showSlide(currentSlide - 1));
-    nextButton?.addEventListener('click', () => showSlide(currentSlide + 1));
+    function showEvaluator(evaluatorName) {
+        evaluatorTabs.forEach((tab) => {
+            const isActive = tab.dataset.evaluatorTab === evaluatorName;
+            tab.classList.toggle('is-active', isActive);
+            tab.setAttribute('aria-selected', String(isActive));
+        });
 
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => showSlide(index));
+        evaluatorPanels.forEach((panel) => {
+            panel.hidden = panel.dataset.evaluatorPanel !== evaluatorName;
+        });
+    }
+
+    explorer.querySelectorAll('.comparison-carousel').forEach(initializeCarousel);
+
+    evaluatorTabs.forEach((tab) => {
+        tab.addEventListener('click', () => showEvaluator(tab.dataset.evaluatorTab));
     });
 
-    carousel.addEventListener('keydown', (event) => {
-        if (event.key === 'ArrowLeft') {
-            event.preventDefault();
-            showSlide(currentSlide - 1);
-        }
-        if (event.key === 'ArrowRight') {
-            event.preventDefault();
-            showSlide(currentSlide + 1);
-        }
-    });
-
-    carousel.addEventListener('touchstart', (event) => {
-        touchStartX = event.changedTouches[0].clientX;
-    }, { passive: true });
-
-    carousel.addEventListener('touchend', (event) => {
-        if (touchStartX === null) return;
-        const distance = event.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(distance) > 45) {
-            showSlide(currentSlide + (distance < 0 ? 1 : -1));
-        }
-        touchStartX = null;
-    }, { passive: true });
-
-    showSlide(0);
+    const initiallyActiveTab = evaluatorTabs.find((tab) => tab.classList.contains('is-active'));
+    if (initiallyActiveTab) {
+        showEvaluator(initiallyActiveTab.dataset.evaluatorTab);
+    }
 }
 
 $(document).ready(function() {

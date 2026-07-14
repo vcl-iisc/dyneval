@@ -237,6 +237,10 @@ body {
   opacity: 0.48;
 }
 
+.evaluator-panel[hidden] {
+  display: none;
+}
+
 .comparison-carousel {
   outline: none;
 }
@@ -1146,4 +1150,3 @@ a:focus {
     box-shadow: none !important;
   }
 }
-
