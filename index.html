@@ -307,12 +307,6 @@
           </div>
         </div>
 
-        <div class="direction-summary" aria-label="Preference agreement across displayed examples">
-          <p>Human preference recovered across 7 displayed pairs</p>
-          <div><strong>DynEval: 7 / 7</strong><span>Agrees with people in every displayed pair</span></div>
-          <div class="is-baseline"><strong>Existing evaluator: 1 / 7</strong><span>Usually chooses the opposite image or reports a tie</span></div>
-        </div>
-
         <div class="evaluator-tabs" role="tablist" aria-label="Evaluation method">
           <button class="evaluator-tab is-active" id="evaluator-tab-geneval" type="button" role="tab" aria-selected="true" aria-controls="evaluator-panel-geneval" data-evaluator-tab="geneval">GenEval</button>
           <button class="evaluator-tab" type="button" role="tab" aria-selected="false" disabled title="Source images will be added later">EvalMuse</button>
@@ -335,9 +329,9 @@
                       <div class="result-card-body">
                         <h4>Z-Image</h4>
                         <dl class="score-list">
-                          <div><dt>GenEval</dt><dd class="score-badge is-mismatch">1.00</dd></div>
-                          <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.80</dd></div>
-                          <div><dt>Human</dt><dd class="score-badge is-human">0.40</dd></div>
+                          <div><dt>GenEval</dt><dd class="score-badge is-mismatch is-pair-winner">1.00</dd></div>
+                          <div><dt>DynEval-4B</dt><dd class="score-badge is-closest is-pair-winner">0.80</dd></div>
+                          <div><dt>Human</dt><dd class="score-badge is-human is-pair-winner">0.40</dd></div>
                         </dl>
                       </div>
                     </article>
@@ -372,7 +366,7 @@
                       <div class="result-card-body">
                         <h4>Stable Diffusion 2.0</h4>
                         <dl class="score-list">
-                          <div><dt>GenEval</dt><dd class="score-badge is-mismatch">1.00</dd></div>
+                          <div><dt>GenEval</dt><dd class="score-badge is-mismatch is-pair-winner">1.00</dd></div>
                           <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.70</dd></div>
                           <div><dt>Human</dt><dd class="score-badge is-human">0.56</dd></div>
                         </dl>
@@ -384,8 +378,8 @@
                         <h4>DeepFloyd IF-I-XL</h4>
                         <dl class="score-list">
                           <div><dt>GenEval</dt><dd class="score-badge is-mismatch">0.00</dd></div>
-                          <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.80</dd></div>
-                          <div><dt>Human</dt><dd class="score-badge is-human">0.64</dd></div>
+                          <div><dt>DynEval-4B</dt><dd class="score-badge is-closest is-pair-winner">0.80</dd></div>
+                          <div><dt>Human</dt><dd class="score-badge is-human is-pair-winner">0.64</dd></div>
                         </dl>
                       </div>
                     </article>
@@ -414,7 +408,7 @@
                       <div class="result-card-body">
                         <h4>Stable Diffusion 2.0</h4>
                         <dl class="score-list">
-                          <div><dt>GenEval</dt><dd class="score-badge is-mismatch">1.00</dd></div>
+                          <div><dt>GenEval</dt><dd class="score-badge is-mismatch is-pair-winner">1.00</dd></div>
                           <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.50</dd></div>
                           <div><dt>Human</dt><dd class="score-badge is-human">0.56</dd></div>
                         </dl>
@@ -426,8 +420,8 @@
                         <h4>DeepFloyd IF-I-XL</h4>
                         <dl class="score-list">
                           <div><dt>GenEval</dt><dd class="score-badge is-mismatch">0.00</dd></div>
-                          <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.60</dd></div>
-                          <div><dt>Human</dt><dd class="score-badge is-human">0.76</dd></div>
+                          <div><dt>DynEval-4B</dt><dd class="score-badge is-closest is-pair-winner">0.60</dd></div>
+                          <div><dt>Human</dt><dd class="score-badge is-human is-pair-winner">0.76</dd></div>
                         </dl>
                       </div>
                     </article>
@@ -452,8 +446,8 @@
                         <h4>Real image</h4>
                         <dl class="score-list">
                           <div><dt>GenEval</dt><dd class="score-badge is-mismatch">0.00</dd></div>
-                          <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">1.00</dd></div>
-                          <div><dt>Human</dt><dd class="score-badge is-human">0.76</dd></div>
+                          <div><dt>DynEval-4B</dt><dd class="score-badge is-closest is-pair-winner">1.00</dd></div>
+                          <div><dt>Human</dt><dd class="score-badge is-human is-pair-winner">0.76</dd></div>
                         </dl>
                       </div>
                     </article>
@@ -462,7 +456,7 @@
                       <div class="result-card-body">
                         <h4>Stable Diffusion 2.0</h4>
                         <dl class="score-list">
-                          <div><dt>GenEval</dt><dd class="score-badge is-mismatch">1.00</dd></div>
+                          <div><dt>GenEval</dt><dd class="score-badge is-mismatch is-pair-winner">1.00</dd></div>
                           <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.87</dd></div>
                           <div><dt>Human</dt><dd class="score-badge is-human">0.64</dd></div>
                         </dl>
@@ -507,7 +501,7 @@
                     <div class="result-card-body">
                       <h4>Sana</h4>
                       <dl class="score-list">
-                        <div><dt>DPG-Bench</dt><dd class="score-badge is-mismatch">0.92</dd></div>
+                        <div><dt>DPG-Bench</dt><dd class="score-badge is-mismatch is-pair-winner">0.92</dd></div>
                         <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.45</dd></div>
                         <div><dt>Human</dt><dd class="score-badge is-human">0.40</dd></div>
                       </dl>
@@ -519,8 +513,8 @@
                       <h4>OmniGen2</h4>
                       <dl class="score-list">
                         <div><dt>DPG-Bench</dt><dd class="score-badge is-mismatch">0.24</dd></div>
-                        <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.80</dd></div>
-                        <div><dt>Human</dt><dd class="score-badge is-human">0.60</dd></div>
+                        <div><dt>DynEval-4B</dt><dd class="score-badge is-closest is-pair-winner">0.80</dd></div>
+                        <div><dt>Human</dt><dd class="score-badge is-human is-pair-winner">0.60</dd></div>
                       </dl>
                     </div>
                   </article>
@@ -545,8 +539,8 @@
                       <h4>Stable Diffusion 3.5</h4>
                       <dl class="score-list">
                         <div><dt>DPG-Bench</dt><dd class="score-badge is-mismatch">0.97</dd></div>
-                        <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.78</dd></div>
-                        <div><dt>Human</dt><dd class="score-badge is-human">0.60</dd></div>
+                        <div><dt>DynEval-4B</dt><dd class="score-badge is-closest is-pair-winner">0.78</dd></div>
+                        <div><dt>Human</dt><dd class="score-badge is-human is-pair-winner">0.60</dd></div>
                       </dl>
                     </div>
                   </article>
@@ -555,7 +549,7 @@
                     <div class="result-card-body">
                       <h4>Janus-Pro</h4>
                       <dl class="score-list">
-                        <div><dt>DPG-Bench</dt><dd class="score-badge is-mismatch">1.00</dd></div>
+                        <div><dt>DPG-Bench</dt><dd class="score-badge is-mismatch is-pair-winner">1.00</dd></div>
                         <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.54</dd></div>
                         <div><dt>Human</dt><dd class="score-badge is-human">0.30</dd></div>
                       </dl>
@@ -598,8 +592,8 @@
                       <h4>FLUX.2 Klein</h4>
                       <dl class="score-list">
                         <div><dt>DPG-Bench</dt><dd class="score-badge is-mismatch">1.00</dd></div>
-                        <div><dt>DynEval-4B</dt><dd class="score-badge is-closest">0.88</dd></div>
-                        <div><dt>Human</dt><dd class="score-badge is-human">0.90</dd></div>
+                        <div><dt>DynEval-4B</dt><dd class="score-badge is-closest is-pair-winner">0.88</dd></div>
+                        <div><dt>Human</dt><dd class="score-badge is-human is-pair-winner">0.90</dd></div>
                       </dl>
                     </div>
                   </article>
