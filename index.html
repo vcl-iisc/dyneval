@@ -236,12 +236,22 @@
                   <div class="column has-text-centered">
                     <div class="publication-links">
                       <span class="link-block">
-                        <a href="https://arxiv.org/abs/2607.11199" target="_blank" rel="noopener noreferrer"
+                        <a href="https://arxiv.org/pdf/2607.11199" target="_blank" rel="noopener noreferrer"
                           class="external-link button is-normal is-rounded is-dark">
                           <span class="icon">
                             <i class="fas fa-file-pdf"></i>
                           </span>
                           <span>Paper</span>
+                        </a>
+                      </span>
+
+                      <span class="link-block">
+                        <a href="https://arxiv.org/abs/2607.11199" target="_blank" rel="noopener noreferrer"
+                          class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <i class="fas fa-file-alt"></i>
+                          </span>
+                          <span>arXiv</span>
                         </a>
                       </span>
 
@@ -269,14 +279,23 @@
                     </a>
                   </span>
 
-                  <span class="link-block">
-                    <a href="https://github.com/vcl-iisc/dyneval_code" target="_blank"
+                <span class="link-block">
+                  <a href="https://github.com/vcl-iisc/dyneval_code" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
                     <span>Code</span>
                   </a>
+                </span>
+
+                <span class="link-block">
+                  <button class="external-link button is-normal is-rounded is-dark" type="button" disabled title="Video coming soon">
+                    <span class="icon">
+                      <i class="fas fa-video"></i>
+                    </span>
+                    <span>Video</span>
+                  </button>
                 </span>
             </div>
           </div>
@@ -295,15 +314,15 @@
       <div class="figure-explorer" id="figure1-explorer">
         <div class="figure-explorer-header">
           <div>
-            <p class="figure-kicker">Interactive Figure 1</p>
-            <h2 class="title is-3" id="figure1-explorer-title">When people prefer one image, does the evaluator agree?</h2>
-            <p class="figure-explorer-intro">The scores are shown for transparency, but you do not need to compare the numbers yourself. Under each image pair, we state which image humans prefer and whether each evaluator makes the same choice.</p>
+            <h2 class="title is-3" id="figure1-explorer-title">Do evaluators agree with human preferences?</h2>
+            <p class="figure-explorer-intro">For each image pair, humans selected the image they preferred. The evaluator is considered correct if it assigns a higher score to the same image.</p>
+            <p class="figure-explorer-intro">The numerical scores are shown for transparency, but you do not need to compare them manually. Under each pair, we explicitly indicate the human preference and whether each evaluator reaches the same conclusion.</p>
           </div>
           <div class="figure-legend how-to-read" aria-label="How to read the comparison">
-            <b>How to read each pair</b>
-            <span><i>1</i> Human defines the preferred image.</span>
-            <span><i>2</i> <strong class="is-good">Green</strong> means the evaluator agrees.</span>
-            <span><i>3</i> <strong class="is-bad">Red</strong> means it chooses the wrong image.</span>
+            <b>Reading the results</b>
+            <span><strong>Human preference</strong> defines the correct choice for each image pair.</span>
+            <span><strong class="is-good">Green</strong> indicates that the evaluator agrees with human judgment.</span>
+            <span><strong class="is-bad">Red</strong> indicates that the evaluator prefers the wrong image.</span>
           </div>
         </div>
 
