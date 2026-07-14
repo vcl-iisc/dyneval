@@ -202,6 +202,27 @@ body {
   background: #dc2626;
 }
 
+.legend-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.25rem;
+  border-radius: 50%;
+  font-size: 0.7rem;
+}
+
+.legend-symbol.is-aligned {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.legend-symbol.is-opposite {
+  color: #9a3412;
+  background: #ffedd5;
+}
+
 .evaluator-tabs {
   display: flex;
   gap: 0.35rem;
@@ -210,6 +231,57 @@ body {
   overflow-x: auto;
   background: #e9eef5;
   border-radius: 12px;
+}
+
+.direction-summary {
+  display: grid;
+  grid-template-columns: auto repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.85rem;
+  color: #166534;
+  background: linear-gradient(90deg, #f0fdf4, #f8fafc);
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+}
+
+.direction-summary > p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.direction-summary > div {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.direction-summary strong {
+  flex: 0 0 auto;
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.direction-summary span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.direction-summary .is-baseline {
+  color: #991b1b;
+}
+
+.direction-summary > small {
+  grid-column: 2 / -1;
+  color: var(--text-secondary);
+  font-size: 0.66rem;
 }
 
 .evaluator-tab {
@@ -317,11 +389,33 @@ body {
 }
 
 .result-card {
+  position: relative;
   min-width: 0;
   overflow: hidden;
   background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: 11px;
+}
+
+.comparison-pair .result-card::before {
+  position: absolute;
+  z-index: 1;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.18rem 0.45rem;
+  color: #ffffff;
+  background: rgb(15 23 42 / 0.82);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  content: "Image 1";
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.comparison-pair .result-card:nth-child(2)::before {
+  content: "Image 2";
 }
 
 .result-card > img {
@@ -385,6 +479,87 @@ body {
 .score-badge.is-human {
   color: #1e3a8a;
   background: #dbeafe;
+}
+
+.pair-trend {
+  margin-top: 0.8rem;
+  padding: 0.65rem;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+.pair-trend-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.45rem;
+  color: var(--text-secondary);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pair-trend-heading b {
+  color: var(--text-primary);
+  font-size: 0.7rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.trend-row {
+  display: grid;
+  grid-template-columns: minmax(78px, 1fr) auto minmax(72px, auto);
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.3rem;
+  padding: 0.36rem 0.45rem;
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+  font-size: 0.67rem;
+}
+
+.trend-row > span {
+  font-weight: 700;
+}
+
+.trend-row > b {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.trend-row > em {
+  justify-self: end;
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.trend-row.is-reference {
+  color: #1e3a8a;
+  background: #eff6ff;
+  border-left-color: #3b82f6;
+}
+
+.trend-row.is-aligned {
+  color: #166534;
+  background: #f0fdf4;
+  border-left-color: #22c55e;
+}
+
+.trend-row.is-opposite {
+  color: #991b1b;
+  background: #fef2f2;
+  border-left-color: #ef4444;
+}
+
+.trend-row.is-flat {
+  color: #9a3412;
+  background: #fff7ed;
+  border-left-color: #f97316;
 }
 
 .slide-takeaway {
@@ -491,6 +666,14 @@ body {
 
   .comparison-grid {
     grid-template-columns: 1fr;
+  }
+
+  .direction-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .direction-summary > small {
+    grid-column: auto;
   }
 
   .comparison-prompt {

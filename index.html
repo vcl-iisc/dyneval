@@ -297,12 +297,21 @@
           <div>
             <p class="figure-kicker">Interactive Figure 1</p>
             <h2 class="title is-3" id="figure1-explorer-title">Where existing evaluators disagree with people</h2>
-            <p class="figure-explorer-intro">Compare evaluator scores with DynEval-4B and human judgment using the original, uncropped source images from the paper.</p>
+            <p class="figure-explorer-intro">Read each pair from Image 1 to Image 2. DynEval-4B follows the same score direction as human judgment, while existing evaluators often reverse the ordering or miss the change.</p>
           </div>
-          <div class="figure-legend" aria-label="Score legend">
-            <span><i class="legend-swatch is-closest"></i> Closest to human</span>
-            <span><i class="legend-swatch is-mismatch"></i> Larger mismatch</span>
+          <div class="figure-legend" aria-label="Comparison legend">
+            <span><i class="legend-swatch is-closest"></i> Closer score</span>
+            <span><i class="legend-swatch is-mismatch"></i> Larger score error</span>
+            <span><b class="legend-symbol is-aligned">✓</b> Same direction</span>
+            <span><b class="legend-symbol is-opposite">↕</b> Opposite or flat</span>
           </div>
+        </div>
+
+        <div class="direction-summary" aria-label="Pairwise direction summary across displayed examples">
+          <p>Across the 7 displayed pairs</p>
+          <div><strong>7 / 7</strong><span>DynEval matches the human direction</span></div>
+          <div class="is-baseline"><strong>1 / 7</strong><span>Existing evaluator matches the human direction</span></div>
+          <small>The remaining baseline comparisons move in the opposite direction (5) or stay flat (1).</small>
         </div>
 
         <div class="evaluator-tabs" role="tablist" aria-label="Evaluation method">
@@ -345,6 +354,12 @@
                       </div>
                     </article>
                   </div>
+                  <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
+                    <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
+                    <div class="trend-row is-reference"><span>Human</span><b>0.40 ↓ 0.30</b><em>Reference</em></div>
+                    <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.80 ↓ 0.60</b><em>✓ Aligned</em></div>
+                    <div class="trend-row is-aligned"><span>GenEval</span><b>1.00 ↓ 0.00</b><em>✓ Aligned</em></div>
+                  </div>
                 </section>
 
                 <section class="comparison-group" aria-labelledby="geneval-prompt-toothbrush">
@@ -375,6 +390,12 @@
                         </dl>
                       </div>
                     </article>
+                  </div>
+                  <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
+                    <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
+                    <div class="trend-row is-reference"><span>Human</span><b>0.56 ↑ 0.64</b><em>Reference</em></div>
+                    <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.70 ↑ 0.80</b><em>✓ Aligned</em></div>
+                    <div class="trend-row is-opposite"><span>GenEval</span><b>1.00 ↓ 0.00</b><em>↕ Opposite</em></div>
                   </div>
                 </section>
               </div>
@@ -412,6 +433,12 @@
                       </div>
                     </article>
                   </div>
+                  <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
+                    <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
+                    <div class="trend-row is-reference"><span>Human</span><b>0.56 ↑ 0.76</b><em>Reference</em></div>
+                    <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.50 ↑ 0.60</b><em>✓ Aligned</em></div>
+                    <div class="trend-row is-opposite"><span>GenEval</span><b>1.00 ↓ 0.00</b><em>↕ Opposite</em></div>
+                  </div>
                 </section>
 
                 <section class="comparison-group" aria-labelledby="geneval-prompt-bear">
@@ -442,6 +469,12 @@
                         </dl>
                       </div>
                     </article>
+                  </div>
+                  <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
+                    <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
+                    <div class="trend-row is-reference"><span>Human</span><b>0.76 ↓ 0.64</b><em>Reference</em></div>
+                    <div class="trend-row is-aligned"><span>DynEval-4B</span><b>1.00 ↓ 0.87</b><em>✓ Aligned</em></div>
+                    <div class="trend-row is-opposite"><span>GenEval</span><b>0.00 ↑ 1.00</b><em>↕ Opposite</em></div>
                   </div>
                 </section>
               </div>
@@ -493,6 +526,12 @@
                     </div>
                   </article>
                 </div>
+                <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
+                  <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
+                  <div class="trend-row is-reference"><span>Human</span><b>0.40 ↑ 0.60</b><em>Reference</em></div>
+                  <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.45 ↑ 0.80</b><em>✓ Aligned</em></div>
+                  <div class="trend-row is-opposite"><span>DPG-Bench</span><b>0.92 ↓ 0.24</b><em>↕ Opposite</em></div>
+                </div>
               </section>
 
               <section class="comparison-group" aria-labelledby="prompt-ladder">
@@ -523,6 +562,12 @@
                       </dl>
                     </div>
                   </article>
+                </div>
+                <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
+                  <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
+                  <div class="trend-row is-reference"><span>Human</span><b>0.60 ↓ 0.30</b><em>Reference</em></div>
+                  <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.78 ↓ 0.54</b><em>✓ Aligned</em></div>
+                  <div class="trend-row is-opposite"><span>DPG-Bench</span><b>0.97 ↑ 1.00</b><em>↕ Opposite</em></div>
                 </div>
               </section>
             </div>
@@ -559,6 +604,12 @@
                       </dl>
                     </div>
                   </article>
+                </div>
+                <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
+                  <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
+                  <div class="trend-row is-reference"><span>Human</span><b>0.75 ↑ 0.90</b><em>Reference</em></div>
+                  <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.70 ↑ 0.88</b><em>✓ Aligned</em></div>
+                  <div class="trend-row is-flat"><span>DPG-Bench</span><b>1.00 → 1.00</b><em>— Flat</em></div>
                 </div>
               </section>
             </div>
