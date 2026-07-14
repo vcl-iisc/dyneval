@@ -912,6 +912,67 @@
   </div>
 </section>
 
+<section class="section hero is-light" id="leaderboard">
+  <div class="container is-max-desktop content">
+    <div class="leaderboard-heading">
+      <div>
+        <h2 class="title">DynEval-1K Leaderboard</h2>
+        <p>Overall performance of 36 text-to-image generative models, ranked by the DynEval-4B score on the DynEval-1K evaluation set. Scores are normalized to [0, 1].</p>
+      </div>
+      <span class="leaderboard-evaluator">Evaluator: DynEval-4B</span>
+    </div>
+    <div class="table-container leaderboard-table-wrap">
+      <table class="table is-fullwidth leaderboard-table">
+        <thead><tr><th>Rank</th><th>Model</th><th>Tier</th><th>DynEval Score</th></tr></thead>
+        <tbody>
+          <tr class="tier-summary tier-one"><td colspan="4"><strong>Tier 1</strong><span>Average 0.872 ± 0.041</span></td></tr>
+          <tr class="leaderboard-top"><td><span class="rank-medal rank-gold">1</span></td><td>GPT-Image-1.5</td><td><span class="tier-badge tier-one">Tier 1</span></td><td><strong>0.934</strong></td></tr>
+          <tr class="leaderboard-top"><td><span class="rank-medal rank-silver">2</span></td><td>NanoBanana</td><td><span class="tier-badge tier-one">Tier 1</span></td><td><strong>0.915</strong></td></tr>
+          <tr class="leaderboard-top"><td><span class="rank-medal rank-bronze">3</span></td><td>FLUX.2 [klein]</td><td><span class="tier-badge tier-one">Tier 1</span></td><td><strong>0.883</strong></td></tr>
+          <tr><td>4</td><td>FLUX.2 [dev]</td><td><span class="tier-badge tier-one">Tier 1</span></td><td><strong>0.866</strong></td></tr>
+          <tr><td>5</td><td>FIBO</td><td><span class="tier-badge tier-one">Tier 1</span></td><td><strong>0.844</strong></td></tr>
+          <tr><td>6</td><td>LongCat-Image</td><td><span class="tier-badge tier-one">Tier 1</span></td><td><strong>0.834</strong></td></tr>
+          <tr><td>7</td><td>HiDream-I1</td><td><span class="tier-badge tier-one">Tier 1</span></td><td><strong>0.830</strong></td></tr>
+
+          <tr class="tier-summary tier-two"><td colspan="4"><strong>Tier 2</strong><span>Average 0.739 ± 0.039</span></td></tr>
+          <tr><td>8</td><td>Qwen-Image</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.793</strong></td></tr>
+          <tr><td>9</td><td>Z-Image</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.789</strong></td></tr>
+          <tr><td>10</td><td>GLM-Image</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.780</strong></td></tr>
+          <tr><td>11</td><td>FLUX.1 [dev]</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.776</strong></td></tr>
+          <tr><td>12</td><td>Sana</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.769</strong></td></tr>
+          <tr><td>13</td><td>UniPic</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.768</strong></td></tr>
+          <tr><td>14</td><td>Stable Diffusion 3.5</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.767</strong></td></tr>
+          <tr><td>15</td><td>OmniGen2</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.765</strong></td></tr>
+          <tr><td>16</td><td>In-Context LoRA</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.757</strong></td></tr>
+          <tr><td>17</td><td>Bagel</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.755</strong></td></tr>
+          <tr><td>18</td><td>OmniGen</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.741</strong></td></tr>
+          <tr><td>19</td><td>Hunyuan-DiT</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.727</strong></td></tr>
+          <tr><td>20</td><td>Show-o</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.711</strong></td></tr>
+          <tr><td>21</td><td>X-Omni</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.706</strong></td></tr>
+          <tr><td>22</td><td>Janus-Pro</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.696</strong></td></tr>
+          <tr><td>23</td><td>Kolors</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.689</strong></td></tr>
+          <tr><td>24</td><td>PixArt-α</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.685</strong></td></tr>
+          <tr><td>25</td><td>Kandinsky 3</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.683</strong></td></tr>
+          <tr><td>26</td><td>UniWorld-V1</td><td><span class="tier-badge tier-two">Tier 2</span></td><td><strong>0.682</strong></td></tr>
+
+          <tr class="tier-summary tier-three"><td colspan="4"><strong>Tier 3</strong><span>Average 0.528 ± 0.123</span></td></tr>
+          <tr><td>27</td><td>Playground v2.5</td><td><span class="tier-badge tier-three">Tier 3</span></td><td><strong>0.655</strong></td></tr>
+          <tr><td>28</td><td>SSD-1B</td><td><span class="tier-badge tier-three">Tier 3</span></td><td><strong>0.613</strong></td></tr>
+          <tr><td>29</td><td>DeepFloyd IF-XL</td><td><span class="tier-badge tier-three">Tier 3</span></td><td><strong>0.609</strong></td></tr>
+          <tr><td>30</td><td>Emu3</td><td><span class="tier-badge tier-three">Tier 3</span></td><td><strong>0.597</strong></td></tr>
+          <tr><td>31</td><td>SDXL-Turbo</td><td><span class="tier-badge tier-three">Tier 3</span></td><td><strong>0.594</strong></td></tr>
+          <tr><td>32</td><td>Stable Diffusion XL</td><td><span class="tier-badge tier-three">Tier 3</span></td><td><strong>0.553</strong></td></tr>
+          <tr><td>33</td><td>Stable Diffusion v2.1</td><td><span class="tier-badge tier-three">Tier 3</span></td><td><strong>0.523</strong></td></tr>
+          <tr><td>34</td><td>Stable Diffusion v1.5</td><td><span class="tier-badge tier-three">Tier 3</span></td><td><strong>0.475</strong></td></tr>
+          <tr><td>35</td><td>PixArt-Σ</td><td><span class="tier-badge tier-three">Tier 3</span></td><td><strong>0.425</strong></td></tr>
+          <tr><td>36</td><td>LlamaGen</td><td><span class="tier-badge tier-three">Tier 3</span></td><td><strong>0.240</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="leaderboard-note">Tier averages report mean ± standard deviation, following Table S9 of the supplementary material.</p>
+  </div>
+</section>
+
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">

@@ -141,6 +141,138 @@ body {
   vertical-align: middle !important;
 }
 
+.leaderboard-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.leaderboard-heading .title {
+  margin-bottom: 0.5rem !important;
+}
+
+.leaderboard-heading p {
+  max-width: 720px;
+  margin: 0;
+}
+
+.leaderboard-evaluator {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.75rem;
+  color: #1d4ed8;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.leaderboard-table-wrap {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+}
+
+.leaderboard-table {
+  margin-bottom: 0 !important;
+}
+
+.leaderboard-table thead th {
+  padding: 0.9rem 1rem !important;
+  color: #ffffff;
+  background: #0f172a;
+  border: 0 !important;
+  font-size: 0.78rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.leaderboard-table thead th:first-child,
+.leaderboard-table tbody td:first-child {
+  width: 5rem;
+  text-align: center;
+}
+
+.leaderboard-table thead th:nth-child(3),
+.leaderboard-table tbody td:nth-child(3) {
+  width: 7rem;
+  text-align: center;
+}
+
+.leaderboard-table thead th:last-child,
+.leaderboard-table tbody td:last-child {
+  width: 9rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.leaderboard-table tbody td {
+  padding: 0.68rem 1rem !important;
+  vertical-align: middle !important;
+  border-color: #e2e8f0 !important;
+}
+
+.leaderboard-table tbody tr:not(.tier-summary):hover {
+  background: #f8fafc;
+}
+
+.tier-summary td {
+  padding: 0.62rem 1rem !important;
+  border: 0 !important;
+}
+
+.tier-summary td strong {
+  margin-right: 0.75rem;
+  text-transform: uppercase;
+}
+
+.tier-summary td span {
+  font-size: 0.78rem;
+}
+
+.tier-summary.tier-one td { color: #075985; background: #e0f2fe; }
+.tier-summary.tier-two td { color: #5b21b6; background: #ede9fe; }
+.tier-summary.tier-three td { color: #9a3412; background: #ffedd5; }
+
+.tier-badge {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 4.2rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.tier-badge.tier-one { color: #075985; background: #e0f2fe; }
+.tier-badge.tier-two { color: #5b21b6; background: #ede9fe; }
+.tier-badge.tier-three { color: #9a3412; background: #ffedd5; }
+
+.rank-medal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.rank-gold { color: #713f12; background: #fde68a; }
+.rank-silver { color: #334155; background: #e2e8f0; }
+.rank-bronze { color: #7c2d12; background: #fed7aa; }
+
+.leaderboard-note {
+  margin-top: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
 /* Interactive qualitative comparison (Figure 1) */
 .figure-explorer {
   padding: 1.5rem;
