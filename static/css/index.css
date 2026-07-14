@@ -136,6 +136,11 @@ body {
   margin-top: 3rem !important;
 }
 
+.main-benchmarks-table thead th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
 /* Interactive qualitative comparison (Figure 1) */
 .figure-explorer {
   padding: 1.5rem;
