@@ -296,22 +296,21 @@
         <div class="figure-explorer-header">
           <div>
             <p class="figure-kicker">Interactive Figure 1</p>
-            <h2 class="title is-3" id="figure1-explorer-title">Where existing evaluators disagree with people</h2>
-            <p class="figure-explorer-intro">Read each pair from Image 1 to Image 2. DynEval-4B follows the same score direction as human judgment, while existing evaluators often reverse the ordering or miss the change.</p>
+            <h2 class="title is-3" id="figure1-explorer-title">When people prefer one image, does the evaluator agree?</h2>
+            <p class="figure-explorer-intro">The scores are shown for transparency, but you do not need to compare the numbers yourself. Under each image pair, we state which image humans prefer and whether each evaluator makes the same choice.</p>
           </div>
-          <div class="figure-legend" aria-label="Comparison legend">
-            <span><i class="legend-swatch is-closest"></i> Closer score</span>
-            <span><i class="legend-swatch is-mismatch"></i> Larger score error</span>
-            <span><b class="legend-symbol is-aligned">✓</b> Same direction</span>
-            <span><b class="legend-symbol is-opposite">↕</b> Opposite or flat</span>
+          <div class="figure-legend how-to-read" aria-label="How to read the comparison">
+            <b>How to read each pair</b>
+            <span><i>1</i> Human defines the preferred image.</span>
+            <span><i>2</i> <strong class="is-good">Green</strong> means the evaluator agrees.</span>
+            <span><i>3</i> <strong class="is-bad">Red</strong> means it chooses the wrong image.</span>
           </div>
         </div>
 
-        <div class="direction-summary" aria-label="Pairwise direction summary across displayed examples">
-          <p>Across the 7 displayed pairs</p>
-          <div><strong>7 / 7</strong><span>DynEval matches the human direction</span></div>
-          <div class="is-baseline"><strong>1 / 7</strong><span>Existing evaluator matches the human direction</span></div>
-          <small>The remaining baseline comparisons move in the opposite direction (5) or stay flat (1).</small>
+        <div class="direction-summary" aria-label="Preference agreement across displayed examples">
+          <p>Human preference recovered across 7 displayed pairs</p>
+          <div><strong>DynEval: 7 / 7</strong><span>Agrees with people in every displayed pair</span></div>
+          <div class="is-baseline"><strong>Existing evaluator: 1 / 7</strong><span>Usually chooses the opposite image or reports a tie</span></div>
         </div>
 
         <div class="evaluator-tabs" role="tablist" aria-label="Evaluation method">
@@ -355,10 +354,10 @@
                     </article>
                   </div>
                   <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
-                    <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
-                    <div class="trend-row is-reference"><span>Human</span><b>0.40 ↓ 0.30</b><em>Reference</em></div>
-                    <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.80 ↓ 0.60</b><em>✓ Aligned</em></div>
-                    <div class="trend-row is-aligned"><span>GenEval</span><b>1.00 ↓ 0.00</b><em>✓ Aligned</em></div>
+                    <div class="pair-trend-heading"><span>Which image receives the higher score?</span></div>
+                    <div class="trend-row is-reference"><span>Humans prefer</span><b>Image 1</b><em>Correct choice</em></div>
+                    <div class="trend-row is-aligned"><span>DynEval prefers</span><b>Image 1</b><em>✓ Agrees</em></div>
+                    <div class="trend-row is-aligned"><span>GenEval prefers</span><b>Image 1</b><em>✓ Agrees</em></div>
                   </div>
                 </section>
 
@@ -392,10 +391,10 @@
                     </article>
                   </div>
                   <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
-                    <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
-                    <div class="trend-row is-reference"><span>Human</span><b>0.56 ↑ 0.64</b><em>Reference</em></div>
-                    <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.70 ↑ 0.80</b><em>✓ Aligned</em></div>
-                    <div class="trend-row is-opposite"><span>GenEval</span><b>1.00 ↓ 0.00</b><em>↕ Opposite</em></div>
+                    <div class="pair-trend-heading"><span>Which image receives the higher score?</span></div>
+                    <div class="trend-row is-reference"><span>Humans prefer</span><b>Image 2</b><em>Correct choice</em></div>
+                    <div class="trend-row is-aligned"><span>DynEval prefers</span><b>Image 2</b><em>✓ Agrees</em></div>
+                    <div class="trend-row is-opposite"><span>GenEval prefers</span><b>Image 1</b><em>✕ Disagrees</em></div>
                   </div>
                 </section>
               </div>
@@ -434,10 +433,10 @@
                     </article>
                   </div>
                   <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
-                    <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
-                    <div class="trend-row is-reference"><span>Human</span><b>0.56 ↑ 0.76</b><em>Reference</em></div>
-                    <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.50 ↑ 0.60</b><em>✓ Aligned</em></div>
-                    <div class="trend-row is-opposite"><span>GenEval</span><b>1.00 ↓ 0.00</b><em>↕ Opposite</em></div>
+                    <div class="pair-trend-heading"><span>Which image receives the higher score?</span></div>
+                    <div class="trend-row is-reference"><span>Humans prefer</span><b>Image 2</b><em>Correct choice</em></div>
+                    <div class="trend-row is-aligned"><span>DynEval prefers</span><b>Image 2</b><em>✓ Agrees</em></div>
+                    <div class="trend-row is-opposite"><span>GenEval prefers</span><b>Image 1</b><em>✕ Disagrees</em></div>
                   </div>
                 </section>
 
@@ -471,10 +470,10 @@
                     </article>
                   </div>
                   <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
-                    <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
-                    <div class="trend-row is-reference"><span>Human</span><b>0.76 ↓ 0.64</b><em>Reference</em></div>
-                    <div class="trend-row is-aligned"><span>DynEval-4B</span><b>1.00 ↓ 0.87</b><em>✓ Aligned</em></div>
-                    <div class="trend-row is-opposite"><span>GenEval</span><b>0.00 ↑ 1.00</b><em>↕ Opposite</em></div>
+                    <div class="pair-trend-heading"><span>Which image receives the higher score?</span></div>
+                    <div class="trend-row is-reference"><span>Humans prefer</span><b>Image 1</b><em>Correct choice</em></div>
+                    <div class="trend-row is-aligned"><span>DynEval prefers</span><b>Image 1</b><em>✓ Agrees</em></div>
+                    <div class="trend-row is-opposite"><span>GenEval prefers</span><b>Image 2</b><em>✕ Disagrees</em></div>
                   </div>
                 </section>
               </div>
@@ -527,10 +526,10 @@
                   </article>
                 </div>
                 <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
-                  <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
-                  <div class="trend-row is-reference"><span>Human</span><b>0.40 ↑ 0.60</b><em>Reference</em></div>
-                  <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.45 ↑ 0.80</b><em>✓ Aligned</em></div>
-                  <div class="trend-row is-opposite"><span>DPG-Bench</span><b>0.92 ↓ 0.24</b><em>↕ Opposite</em></div>
+                  <div class="pair-trend-heading"><span>Which image receives the higher score?</span></div>
+                  <div class="trend-row is-reference"><span>Humans prefer</span><b>Image 2</b><em>Correct choice</em></div>
+                  <div class="trend-row is-aligned"><span>DynEval prefers</span><b>Image 2</b><em>✓ Agrees</em></div>
+                  <div class="trend-row is-opposite"><span>DPG-Bench prefers</span><b>Image 1</b><em>✕ Disagrees</em></div>
                 </div>
               </section>
 
@@ -564,10 +563,10 @@
                   </article>
                 </div>
                 <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
-                  <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
-                  <div class="trend-row is-reference"><span>Human</span><b>0.60 ↓ 0.30</b><em>Reference</em></div>
-                  <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.78 ↓ 0.54</b><em>✓ Aligned</em></div>
-                  <div class="trend-row is-opposite"><span>DPG-Bench</span><b>0.97 ↑ 1.00</b><em>↕ Opposite</em></div>
+                  <div class="pair-trend-heading"><span>Which image receives the higher score?</span></div>
+                  <div class="trend-row is-reference"><span>Humans prefer</span><b>Image 1</b><em>Correct choice</em></div>
+                  <div class="trend-row is-aligned"><span>DynEval prefers</span><b>Image 1</b><em>✓ Agrees</em></div>
+                  <div class="trend-row is-opposite"><span>DPG-Bench prefers</span><b>Image 2</b><em>✕ Disagrees</em></div>
                 </div>
               </section>
             </div>
@@ -606,10 +605,10 @@
                   </article>
                 </div>
                 <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
-                  <div class="pair-trend-heading"><span>Pairwise direction</span><b>Image 1 → Image 2</b></div>
-                  <div class="trend-row is-reference"><span>Human</span><b>0.75 ↑ 0.90</b><em>Reference</em></div>
-                  <div class="trend-row is-aligned"><span>DynEval-4B</span><b>0.70 ↑ 0.88</b><em>✓ Aligned</em></div>
-                  <div class="trend-row is-flat"><span>DPG-Bench</span><b>1.00 → 1.00</b><em>— Flat</em></div>
+                  <div class="pair-trend-heading"><span>Which image receives the higher score?</span></div>
+                  <div class="trend-row is-reference"><span>Humans prefer</span><b>Image 2</b><em>Correct choice</em></div>
+                  <div class="trend-row is-aligned"><span>DynEval prefers</span><b>Image 2</b><em>✓ Agrees</em></div>
+                  <div class="trend-row is-flat"><span>DPG-Bench</span><b>Same score</b><em>— No preference</em></div>
                 </div>
               </section>
             </div>

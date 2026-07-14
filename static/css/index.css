@@ -185,6 +185,39 @@ body {
   white-space: nowrap;
 }
 
+.how-to-read > b {
+  color: var(--text-primary);
+  font-size: 0.78rem;
+}
+
+.how-to-read span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.how-to-read span > i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  color: #ffffff;
+  background: var(--text-secondary);
+  border-radius: 50%;
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.how-to-read .is-good {
+  color: #15803d;
+}
+
+.how-to-read .is-bad {
+  color: #dc2626;
+}
+
 .legend-swatch {
   display: inline-block;
   width: 0.7rem;
@@ -235,7 +268,7 @@ body {
 
 .direction-summary {
   display: grid;
-  grid-template-columns: auto repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(190px, 0.9fr) repeat(2, minmax(0, 1fr));
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
@@ -249,7 +282,7 @@ body {
 .direction-summary > p {
   margin: 0;
   color: var(--text-secondary);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -264,12 +297,12 @@ body {
 
 .direction-summary strong {
   flex: 0 0 auto;
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   font-variant-numeric: tabular-nums;
 }
 
 .direction-summary span {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   line-height: 1.25;
 }
@@ -467,13 +500,13 @@ body {
 }
 
 .score-badge.is-closest {
-  color: #166534;
-  background: #dcfce7;
+  color: #334155;
+  background: #e2e8f0;
 }
 
 .score-badge.is-mismatch {
-  color: #991b1b;
-  background: #fee2e2;
+  color: #334155;
+  background: #e2e8f0;
 }
 
 .score-badge.is-human {
@@ -494,12 +527,11 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  margin-bottom: 0.45rem;
-  color: var(--text-secondary);
-  font-size: 0.66rem;
+  margin-bottom: 0.55rem;
+  color: var(--text-primary);
+  font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  letter-spacing: 0;
 }
 
 .pair-trend-heading b {
@@ -518,7 +550,7 @@ body {
   padding: 0.36rem 0.45rem;
   border-left: 3px solid transparent;
   border-radius: 6px;
-  font-size: 0.67rem;
+  font-size: 0.74rem;
 }
 
 .trend-row > span {
@@ -526,13 +558,18 @@ body {
 }
 
 .trend-row > b {
+  padding: 0.16rem 0.42rem;
+  background: rgb(255 255 255 / 0.78);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.7rem;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .trend-row > em {
   justify-self: end;
-  font-size: 0.62rem;
+  font-size: 0.67rem;
   font-style: normal;
   font-weight: 800;
   white-space: nowrap;
