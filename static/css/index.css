@@ -146,6 +146,32 @@ body {
   vertical-align: middle !important;
 }
 
+.additional-benchmarks-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.additional-benchmarks-table .evaluator-column {
+  width: 24%;
+}
+
+.additional-benchmarks-table .metric-column {
+  width: 9.5%;
+}
+
+.additional-benchmarks-table tbody td {
+  vertical-align: middle !important;
+}
+
+.additional-benchmarks-table tbody td:first-child {
+  text-align: left !important;
+}
+
+.additional-benchmarks-table tbody td:not(:first-child) {
+  text-align: center !important;
+  font-variant-numeric: tabular-nums;
+}
+
 .leaderboard-heading {
   display: flex;
   align-items: flex-start;

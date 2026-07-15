@@ -127,6 +127,100 @@ function setupFigureOneExplorer() {
     const evaluatorTabs = Array.from(explorer.querySelectorAll('[data-evaluator-tab]'));
     const evaluatorPanels = Array.from(explorer.querySelectorAll('[data-evaluator-panel]'));
 
+    const supplementaryComparisons = {
+        geneval: [
+            { prompt: 'A photo of a blue book.', models: ['Real Image', 'DeepFloyd IF-I-XL'], images: ['geneval-09-book-real.png', 'geneval-10-book-deepfloyd-ifxl.png'], scores: [[0.80, 0.93, 0.00], [0.68, 0.80, 1.00]], preferred: [0, 0, 1] },
+            { prompt: 'A photo of a green traffic light.', models: ['Real Image', 'Stable Diffusion 2.0'], images: ['geneval-11-traffic-light-real.png', 'geneval-12-traffic-light-sd2.png'], scores: [[0.76, 1.00, 0.00], [0.60, 0.80, 1.00]], preferred: [0, 0, 1] },
+            { prompt: 'A photo of two trucks.', models: ['DeepFloyd IF-I-XL', 'Stable Diffusion 2.0'], images: ['geneval-13-trucks-deepfloyd-ifxl.png', 'geneval-14-trucks-sd2.png'], scores: [[0.76, 0.80, 0.00], [0.68, 0.70, 1.00]], preferred: [0, 0, 1] },
+            { prompt: 'A photo of a pink car.', models: ['Real Image', 'DeepFloyd IF-I-XL'], images: ['geneval-15-pink-car-real.png', 'geneval-16-pink-car-deepfloyd-ifxl.png'], scores: [[0.72, 1.00, 0.00], [0.64, 0.60, 1.00]], preferred: [0, 0, 1] }
+        ],
+        evalmuse: [
+            { prompt: 'Four stainless steel forks.', models: ['DALL-E 3', 'Midjourney 6'], images: ['evalmuse-09-forks-dalle3.png', 'evalmuse-10-forks-midjourney6.png'], scores: [[1.00, 1.00, 0.80], [0.73, 0.80, 0.87]], preferred: [0, 0, 1] },
+            { prompt: 'A row of houses with chimneys, but no smoke coming out.', models: ['SDXL', 'Midjourney 6'], images: ['evalmuse-11-houses-sdxl.png', 'evalmuse-12-houses-midjourney6.png'], scores: [[1.00, 1.00, 0.52], [0.47, 0.80, 0.76]], preferred: [0, 0, 1] },
+            { prompt: 'The iceman beats the heat with near-perfect form.', models: ['Hi-Dream', 'DALL-E 3'], images: ['evalmuse-13-iceman-hidream.png', 'evalmuse-14-iceman-dalle3.png'], scores: [[0.20, 0.57, 0.65], [0.80, 0.77, 0.44]], preferred: [1, 1, 0] },
+            { prompt: "A man in a tuxedo doesn't adjust his tie.", models: ['DALL-E 3', 'Real Image'], images: ['evalmuse-15-tuxedo-dalle3.png', 'evalmuse-16-tuxedo-real.png'], scores: [[0.40, 0.80, 0.79], [1.00, 1.00, 0.41]], preferred: [1, 1, 0] }
+        ],
+        tifa: [
+            { prompt: 'A cat jumping in the air to get onto a table.', models: ['Stable Diffusion 1.5', 'VQ-Diffusion'], images: ['tifa-09-cat-sd15.png', 'tifa-10-cat-vq-diffusion.png'], scores: [[1.00, 0.90, 0.57], [0.70, 0.65, 0.71]], preferred: [0, 0, 1] },
+            { prompt: 'The people are flying the kites in the sky.', models: ['Stable Diffusion 1.5', 'VQ-Diffusion'], images: ['tifa-11-kites-sd15.png', 'tifa-12-kites-vq-diffusion.png'], scores: [[1.00, 0.90, 0.71], [0.60, 0.50, 1.00]], preferred: [0, 0, 1] },
+            { prompt: 'Black and white photograph of a bed with a laptop on it.', models: ['DALL-E mini', 'Stable Diffusion 1.5'], images: ['tifa-13-bed-dalle-mini.png', 'tifa-14-bed-sd15.png'], scores: [[1.00, 0.80, 0.86], [0.70, 0.60, 1.00]], preferred: [0, 0, 1] },
+            { prompt: 'A car and a truck sitting at a red light.', models: ['Stable Diffusion 1.5', 'Stable Diffusion 2.0'], images: ['tifa-15-car-truck-sd15.png', 'tifa-16-car-truck-sd2.png'], scores: [[0.50, 0.36, 0.60], [0.60, 0.66, 0.40]], preferred: [1, 1, 0] }
+        ],
+        dpgbench: [
+            { prompt: 'On the left is a metal fork and on the right is a wooden spoon.', models: ['SDXL', 'DeepFloyd IF-I-XL'], images: ['dpgbench-09-fork-spoon-sdxl.png', 'dpgbench-10-fork-spoon-deepfloyd-ifxl.png'], scores: [[0.47, 0.47, 0.88], [1.00, 0.90, 0.76]], preferred: [1, 1, 0] },
+            { prompt: 'A basketball to the left of two soccer balls on a gravel driveway.', models: ['DALL-E mini', 'Stable Diffusion 1.5'], images: ['dpgbench-11-balls-dalle-mini.png', 'dpgbench-12-balls-sd15.png'], scores: [[0.80, 0.63, 0.40], [0.60, 0.50, 0.60]], preferred: [0, 0, 1] },
+            { prompt: 'An elephant with a colorful scarf and a beanie painting on a large canvas.', models: ['FLUX.2 Klein', 'Emu3'], images: ['dpgbench-13-elephant-flux2-klein.png', 'dpgbench-14-elephant-emu3.png'], scores: [[0.93, 1.00, 0.74], [0.60, 0.73, 0.71]], preferred: [0, 0, 0] },
+            { prompt: 'Three vintage cars parked in a row, one with a white roof and two with green roofs.', models: ['DALL-E 3', 'SDXL'], images: ['dpgbench-15-vintage-cars-dalle3.png', 'dpgbench-16-vintage-cars-sdxl.png'], scores: [[0.87, 0.84, 0.57], [0.40, 0.55, 0.65]], preferred: [0, 0, 1] }
+        ]
+    };
+
+    const evaluatorLabels = { geneval: 'GenEval', evalmuse: 'FGA-BLIP2', tifa: 'TIFA', dpgbench: 'DPG-Bench' };
+
+    function scoreClass(metricIndex, imageIndex, preferred) {
+        const classes = ['score-badge', metricIndex === 0 ? 'is-human' : metricIndex === 1 ? 'is-closest' : 'is-mismatch'];
+        if (preferred[metricIndex] === imageIndex) classes.push('is-pair-winner');
+        if (metricIndex === 2 && preferred[metricIndex] !== preferred[0] && preferred[metricIndex] === imageIndex) classes.push('is-disagreement');
+        return classes.join(' ');
+    }
+
+    function comparisonGroupMarkup(item, evaluatorName, pairNumber) {
+        const evaluatorLabel = evaluatorLabels[evaluatorName];
+        const cards = item.models.map((model, imageIndex) => {
+            const values = item.scores[imageIndex];
+            return `<article class="result-card">
+                <img src="static/images/figure1_sources/${item.images[imageIndex]}" alt="${item.prompt} - ${model}" loading="lazy">
+                <div class="result-card-body"><h4>${model}</h4><dl class="score-list">
+                    <div><dt>Human</dt><dd class="${scoreClass(0, imageIndex, item.preferred)}">${values[0].toFixed(2)}</dd></div>
+                    <div><dt>DynEval-4B</dt><dd class="${scoreClass(1, imageIndex, item.preferred)}">${values[1].toFixed(2)}</dd></div>
+                    <div><dt>${evaluatorLabel}</dt><dd class="${scoreClass(2, imageIndex, item.preferred)}">${values[2].toFixed(2)}</dd></div>
+                </dl></div>
+            </article>`;
+        }).join('');
+        const humanImage = item.preferred[0] + 1;
+        const dynImage = item.preferred[1] + 1;
+        const baselineImage = item.preferred[2] + 1;
+        const baselineAgrees = item.preferred[2] === item.preferred[0];
+        return `<section class="comparison-group" aria-labelledby="${evaluatorName}-prompt-${pairNumber}">
+            <div class="comparison-prompt"><span class="prompt-number">${String(pairNumber).padStart(2, '0')}</span><h3 id="${evaluatorName}-prompt-${pairNumber}">“${item.prompt}”</h3></div>
+            <div class="comparison-pair">${cards}</div>
+            <div class="pair-trend" aria-label="Pairwise score direction from image 1 to image 2">
+                <div class="pair-trend-heading"><span>Which image receives the higher score?</span></div>
+                <div class="trend-row is-reference"><span>Humans prefer</span><b>Image ${humanImage}</b></div>
+                <div class="trend-row is-aligned"><span>DynEval prefers</span><b>Image ${dynImage}</b><em>✓ Agrees</em></div>
+                <div class="trend-row ${baselineAgrees ? 'is-aligned' : 'is-opposite'}"><span>${evaluatorLabel} prefers</span><b>Image ${baselineImage}</b><em>${baselineAgrees ? '✓ Agrees' : '✕ Disagrees'}</em></div>
+            </div>
+        </section>`;
+    }
+
+    Object.entries(supplementaryComparisons).forEach(([evaluatorName, comparisons]) => {
+        const panel = explorer.querySelector(`[data-evaluator-panel="${evaluatorName}"]`);
+        const carousel = panel?.querySelector('.comparison-carousel');
+        const controls = carousel?.querySelector('.carousel-controls');
+        const dots = controls?.querySelector('.carousel-dots');
+        if (!carousel || !controls || !dots) return;
+
+        for (let slideOffset = 0; slideOffset < 2; slideOffset += 1) {
+            const slideIndex = slideOffset + 2;
+            const items = comparisons.slice(slideOffset * 2, slideOffset * 2 + 2);
+            const slide = document.createElement('article');
+            slide.className = 'comparison-slide';
+            slide.dataset.figureSlide = String(slideIndex);
+            slide.setAttribute('aria-hidden', 'true');
+            slide.innerHTML = `<div class="comparison-grid">${items.map((item, itemIndex) => comparisonGroupMarkup(item, evaluatorName, 5 + slideOffset * 2 + itemIndex)).join('')}</div>
+                <p class="slide-takeaway"><b>Takeaway:</b> these supplementary examples further show whether each evaluator follows the direction of human preference.</p>`;
+            carousel.insertBefore(slide, controls);
+
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            dot.type = 'button';
+            dot.dataset.figureDot = String(slideIndex);
+            dot.setAttribute('role', 'tab');
+            dot.setAttribute('aria-selected', 'false');
+            dot.setAttribute('aria-label', `Show ${evaluatorLabels[evaluatorName]} examples ${5 + slideOffset * 2} and ${6 + slideOffset * 2}`);
+            dots.appendChild(dot);
+        }
+    });
+
     function initializeCarousel(carousel) {
         const slides = Array.from(carousel.querySelectorAll('[data-figure-slide]'));
         const dots = Array.from(carousel.querySelectorAll('[data-figure-dot]'));
