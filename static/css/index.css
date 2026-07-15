@@ -141,6 +141,11 @@ body {
   vertical-align: middle !important;
 }
 
+.additional-benchmarks-table thead th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
 .leaderboard-heading {
   display: flex;
   align-items: flex-start;
