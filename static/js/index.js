@@ -220,6 +220,31 @@ function setupFigureOneExplorer() {
         }
     });
 
+    function reorderCarouselPages(evaluatorName, pageOrder) {
+        const carousel = explorer.querySelector(`[data-evaluator-panel="${evaluatorName}"] .comparison-carousel`);
+        const controls = carousel?.querySelector('.carousel-controls');
+        const dotsContainer = controls?.querySelector('.carousel-dots');
+        if (!carousel || !controls || !dotsContainer) return;
+
+        const slides = Array.from(carousel.querySelectorAll('[data-figure-slide]'));
+        const dots = Array.from(dotsContainer.querySelectorAll('[data-figure-dot]'));
+        pageOrder.forEach((originalIndex, newIndex) => {
+            const slide = slides[originalIndex];
+            const dot = dots[originalIndex];
+            if (slide) {
+                slide.dataset.figureSlide = String(newIndex);
+                carousel.insertBefore(slide, controls);
+            }
+            if (dot) {
+                dot.dataset.figureDot = String(newIndex);
+                dotsContainer.appendChild(dot);
+            }
+        });
+    }
+
+    reorderCarouselPages('tifa', [1, 2, 3, 0]);
+    reorderCarouselPages('geneval', [1, 2, 3, 0]);
+
     function initializeCarousel(carousel) {
         const slides = Array.from(carousel.querySelectorAll('[data-figure-slide]'));
         const dots = Array.from(carousel.querySelectorAll('[data-figure-dot]'));

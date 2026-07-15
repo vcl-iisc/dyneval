@@ -297,6 +297,26 @@ body {
   text-align: center;
 }
 
+#failure-analysis > .container {
+  display: flex;
+  flex-direction: column;
+}
+
+#failure-analysis .leaderboard-heading {
+  order: -3;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+#failure-analysis .leaderboard-table-wrap {
+  order: -2;
+}
+
+#failure-analysis .leaderboard-note {
+  order: -1;
+}
+
 .leaderboard-followup-figure {
   margin-top: 2.75rem;
 }
