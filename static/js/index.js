@@ -206,8 +206,7 @@ function setupFigureOneExplorer() {
             slide.className = 'comparison-slide';
             slide.dataset.figureSlide = String(slideIndex);
             slide.setAttribute('aria-hidden', 'true');
-            slide.innerHTML = `<div class="comparison-grid">${items.map((item, itemIndex) => comparisonGroupMarkup(item, evaluatorName, 5 + slideOffset * 2 + itemIndex)).join('')}</div>
-                <p class="slide-takeaway"><b>Takeaway:</b> these supplementary examples further show whether each evaluator follows the direction of human preference.</p>`;
+            slide.innerHTML = `<div class="comparison-grid">${items.map((item, itemIndex) => comparisonGroupMarkup(item, evaluatorName, 5 + slideOffset * 2 + itemIndex)).join('')}</div>`;
             carousel.insertBefore(slide, controls);
 
             const dot = document.createElement('button');

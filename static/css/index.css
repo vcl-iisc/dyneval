@@ -743,6 +743,11 @@ body {
   font-size: 0.83rem;
 }
 
+.figure-takeaway-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .carousel-controls {
   display: flex;
   align-items: center;
