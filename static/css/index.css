@@ -768,6 +768,14 @@ body {
   margin-bottom: 1rem;
 }
 
+.figure-overall-takeaway ul {
+  margin: 0.6rem 0 0 1.1rem;
+}
+
+.figure-overall-takeaway li + li {
+  margin-top: 0.45rem;
+}
+
 .carousel-controls {
   display: flex;
   align-items: center;

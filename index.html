@@ -756,7 +756,16 @@
 <!-- End teaser figure -->
 
 <div class="container is-max-desktop figure-takeaway-container">
-  <p class="slide-takeaway figure-overall-takeaway"><b>Takeaway:</b> Compared with existing methods, DynEval-4B produces scores that better agree with human judgments by jointly evaluating text-image alignment and image quality. The examples illustrate three representative failure modes of existing evaluators: detector-based methods often fail to accurately evaluate generated content when the outputs exhibit artistic styles or visual distributions that are underrepresented or absent in the detectors’ training data; visually superior images may receive disproportionately low scores; and visually distorted or semantically implausible images may receive overly high scores. Beyond these evaluator-level failures, average DynEval-4B scores provide a high-level comparison across the three model tiers but do not capture the variability among models within the same tier. The considerable performance gap between the best-performing and worst-performing models does not alter the relative ordering of the most challenging prompt categories: <i>human present</i>, <i>count multi objects</i>, <i>size binding</i>, <i>perspective</i>, <i>anti-realism</i>, and <i>text in image</i> remain among the lowest-scoring subcategories regardless of overall model strength. Overall, the tier assignments effectively capture broad differences in model capability while preserving meaningful variation among models within the same tier, and models with comparable overall DynEval scores can still exhibit distinct strengths and weaknesses across individual semantic dimensions, motivating fine-grained category-wise analysis in addition to overall benchmark performance.</p>
+  <div class="slide-takeaway figure-overall-takeaway">
+    <b>Takeaways:</b>
+    <ul>
+      <li><b>Closer agreement with humans:</b> Compared with existing methods, DynEval-4B produces scores that better agree with human judgments by jointly evaluating text-image alignment and image quality.</li>
+      <li><b>Three failure modes of existing evaluators:</b> Detector-based methods can fail when outputs exhibit artistic styles or visual distributions that are underrepresented or absent in the detectors’ training data; visually superior images may receive disproportionately low scores; and visually distorted or semantically implausible images may receive overly high scores.</li>
+      <li><b>Meaningful variation within each tier:</b> Average DynEval-4B scores provide a high-level comparison across the three model tiers, but they do not capture the variability among models within the same tier.</li>
+      <li><b>Persistent challenges across model strength:</b> Despite the considerable performance gap between the best-performing and worst-performing models, <i>human present</i>, <i>count multi objects</i>, <i>size binding</i>, <i>perspective</i>, <i>anti-realism</i>, and <i>text in image</i> remain among the lowest-scoring subcategories across all tiers.</li>
+      <li><b>Fine-grained analysis remains necessary:</b> Models with comparable overall DynEval scores can exhibit distinct strengths and weaknesses across individual semantic dimensions, motivating category-wise analysis in addition to overall benchmark performance.</li>
+    </ul>
+  </div>
 </div>
 
 <!-- Paper abstract -->
