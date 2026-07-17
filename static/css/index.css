@@ -1653,14 +1653,14 @@ a:focus {
   position: sticky;
   top: 0;
   z-index: 2;
-  background: linear-gradient(180deg, #f1f5fb 0%, #e2e8f2 100%);
-  color: #334155;
+  background: #e2e8f0;
+  color: #0f172a;
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   vertical-align: bottom;
-  border-bottom: 1px solid rgb(148 163 184 / 0.35);
+  border-bottom: 2px solid #94a3b8;
 }
 
 .category-scores-table thead th span {
@@ -1683,8 +1683,8 @@ a:focus {
 
 .category-scores-table thead .sticky-col {
   z-index: 3;
-  background: linear-gradient(180deg, #f1f5fb 0%, #e2e8f2 100%);
-  color: #334155;
+  background: #e2e8f0;
+  color: #0f172a;
 }
 
 .category-scores-table .score-cell {
