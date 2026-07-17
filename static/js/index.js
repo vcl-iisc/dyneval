@@ -334,6 +334,99 @@ function setupFigureOneExplorer() {
     }
 }
 
+// Lightbox popup for the Figure 1 comparison images
+function setupFigureImageLightbox() {
+    const explorer = document.getElementById('figure1-explorer');
+    if (!explorer) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'image-lightbox';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML = `
+        <button class="image-lightbox-close" type="button" aria-label="Close image">&times;</button>
+        <button class="image-lightbox-arrow is-prev" type="button" aria-label="Previous image"><i class="fas fa-arrow-left"></i></button>
+        <figure class="image-lightbox-figure">
+            <img class="image-lightbox-img" src="" alt="">
+            <figcaption class="image-lightbox-caption"></figcaption>
+        </figure>
+        <button class="image-lightbox-arrow is-next" type="button" aria-label="Next image"><i class="fas fa-arrow-right"></i></button>
+    `;
+    document.body.appendChild(overlay);
+
+    const lightboxImage = overlay.querySelector('.image-lightbox-img');
+    const lightboxCaption = overlay.querySelector('.image-lightbox-caption');
+    const closeButton = overlay.querySelector('.image-lightbox-close');
+    const prevButton = overlay.querySelector('.image-lightbox-arrow.is-prev');
+    const nextButton = overlay.querySelector('.image-lightbox-arrow.is-next');
+
+    let galleryImages = [];
+    let currentIndex = 0;
+    let lastFocused = null;
+
+    function renderCurrent() {
+        const image = galleryImages[currentIndex];
+        if (!image) return;
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt || '';
+        lightboxCaption.textContent = image.alt || '';
+        const hasMultiple = galleryImages.length > 1;
+        prevButton.hidden = !hasMultiple;
+        nextButton.hidden = !hasMultiple;
+    }
+
+    function openLightbox(image) {
+        const slide = image.closest('.comparison-slide') || explorer;
+        galleryImages = Array.from(slide.querySelectorAll('.result-card img'));
+        currentIndex = Math.max(0, galleryImages.indexOf(image));
+        lastFocused = document.activeElement;
+        renderCurrent();
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+        closeButton.focus();
+    }
+
+    function closeLightbox() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+        lightboxImage.src = '';
+        if (lastFocused && typeof lastFocused.focus === 'function') {
+            lastFocused.focus();
+        }
+    }
+
+    function showRelative(step) {
+        if (galleryImages.length === 0) return;
+        currentIndex = (currentIndex + step + galleryImages.length) % galleryImages.length;
+        renderCurrent();
+    }
+
+    explorer.addEventListener('click', (event) => {
+        const image = event.target.closest('.result-card img');
+        if (!image || !explorer.contains(image)) return;
+        event.preventDefault();
+        openLightbox(image);
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+    prevButton.addEventListener('click', () => showRelative(-1));
+    nextButton.addEventListener('click', () => showRelative(1));
+
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (!overlay.classList.contains('is-open')) return;
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === 'ArrowLeft') showRelative(-1);
+        if (event.key === 'ArrowRight') showRelative(1);
+    });
+}
+
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
 
@@ -354,5 +447,6 @@ $(document).ready(function() {
     // Setup video autoplay for carousel
     setupVideoCarouselAutoplay();
     setupFigureOneExplorer();
+    setupFigureImageLightbox();
 
 })

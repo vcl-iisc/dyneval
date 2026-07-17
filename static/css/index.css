@@ -594,6 +594,13 @@ body {
   aspect-ratio: 1 / 1;
   object-fit: contain;
   background: #f1f5f9;
+  cursor: zoom-in;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.result-card > img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.03);
 }
 
 .result-card-body {
@@ -1556,5 +1563,124 @@ a:focus {
     background: transparent !important;
     color: var(--text-primary) !important;
     box-shadow: none !important;
+  }
+}
+
+/* Image lightbox popup */
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(8, 12, 24, 0.85);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.image-lightbox.is-open {
+  display: flex;
+  opacity: 1;
+}
+
+.image-lightbox-figure {
+  margin: 0;
+  max-width: min(92vw, 900px);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  animation: lightbox-pop 0.22s ease;
+}
+
+@keyframes lightbox-pop {
+  from { transform: scale(0.94); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.image-lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #f1f5f9;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.image-lightbox-caption {
+  max-width: 100%;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: clamp(0.75rem, 2vw, 1.5rem);
+  right: clamp(0.75rem, 2vw, 1.5rem);
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.image-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.image-lightbox-arrow {
+  flex: none;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.image-lightbox-arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.image-lightbox-arrow[hidden] {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .image-lightbox {
+    gap: 0.5rem;
+  }
+
+  .image-lightbox-arrow {
+    position: absolute;
+    bottom: clamp(0.75rem, 3vw, 1.5rem);
+    z-index: 2;
+  }
+
+  .image-lightbox-arrow.is-prev {
+    left: clamp(0.75rem, 4vw, 2rem);
+  }
+
+  .image-lightbox-arrow.is-next {
+    right: clamp(0.75rem, 4vw, 2rem);
   }
 }
