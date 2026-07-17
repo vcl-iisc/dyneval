@@ -424,7 +424,7 @@ LlamaGen\t2.02 2.652353 2.120208 2.017 2.173077 2.414706 2.91 1.435455 2.347778 
         const parts = line.split('\t');
         const model = parts[0];
         const values = parts[1].trim().split(/\s+/);
-        const cells = values.map((value) => `<td class="score-cell">${Number(value).toFixed(2)}</td>`).join('');
+        const cells = values.map((value) => `<td class="score-cell">${((Number(value) - 1) / 4).toFixed(2)}</td>`).join('');
         return `<tr class="${tierClass(index)}"><td class="sticky-col">${model}</td>${cells}</tr>`;
     }).join('');
 }
