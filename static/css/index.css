@@ -194,11 +194,13 @@ body {
 }
 
 .leaderboard-table-wrap {
-  overflow: hidden;
+  overflow: auto;
+  height: 70vh;
   background: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: 14px;
   box-shadow: var(--shadow-md);
+  -webkit-overflow-scrolling: touch;
 }
 
 .leaderboard-table {
@@ -206,6 +208,9 @@ body {
 }
 
 .leaderboard-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   padding: 0.9rem 1rem !important;
   color: #0f172a !important;
   background: #e2e8f0 !important;
@@ -1577,6 +1582,10 @@ a:focus {
 }
 
 /* DynEval-1K Leaderboard tabs */
+#leaderboard-section .container {
+  width: 100%;
+}
+
 .leaderboard-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -1616,10 +1625,10 @@ a:focus {
 /* Wide per-category scores table */
 .category-scores-wrap {
   overflow: auto;
-  max-height: 72vh;
+  height: 70vh;
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   background: var(--background-primary);
   -webkit-overflow-scrolling: touch;
 }
@@ -1628,14 +1637,14 @@ a:focus {
   border-collapse: separate;
   border-spacing: 0;
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 1rem;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
 
 .category-scores-table th,
 .category-scores-table td {
-  padding: 0.4rem 0.62rem;
+  padding: 0.68rem 1rem;
   text-align: center;
   border-bottom: 1px solid rgb(148 163 184 / 0.16);
 }
@@ -1647,7 +1656,7 @@ a:focus {
   background: linear-gradient(180deg, #f1f5fb 0%, #e2e8f2 100%);
   color: #334155;
   font-weight: 700;
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   vertical-align: bottom;
@@ -1656,7 +1665,7 @@ a:focus {
 
 .category-scores-table thead th span {
   display: inline-block;
-  max-width: 6.5rem;
+  max-width: 8rem;
   white-space: normal;
   line-height: 1.15;
 }
