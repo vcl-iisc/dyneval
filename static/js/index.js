@@ -413,30 +413,19 @@ LlamaGen\t2.02 2.652353 2.120208 2.017 2.173077 2.414706 2.91 1.435455 2.347778 
     const thead = table.querySelector('thead');
     const tbody = table.querySelector('tbody');
 
-    // Map a 1-5 score onto a red -> amber -> green heatmap for at-a-glance reading.
-    const lerp = (a, b, t) => Math.round(a + (b - a) * t);
-    const mix = (c1, c2, t) => [lerp(c1[0], c2[0], t), lerp(c1[1], c2[1], t), lerp(c1[2], c2[2], t)];
-    const LOW = [251, 209, 205];
-    const MID = [255, 240, 199];
-    const HIGH = [200, 233, 197];
-    const heatColor = (value) => {
-        const t = Math.max(0, Math.min(1, (value - 1) / 4));
-        const [r, g, b] = t < 0.5 ? mix(LOW, MID, t / 0.5) : mix(MID, HIGH, (t - 0.5) / 0.5);
-        return `rgb(${r} ${g} ${b})`;
-    };
+    // Color each row by its DynEval tier (rows are in tier-ranked order):
+    // 1-7 Tier 1 (blue), 8-26 Tier 2 (purple), 27-36 Tier 3 (orange).
+    const tierClass = (index) => (index < 7 ? 'cat-tier-one' : index < 26 ? 'cat-tier-two' : 'cat-tier-three');
 
     thead.innerHTML = '<tr><th class="sticky-col">Model</th>' +
         headers.map((key) => `<th title="${key}"><span>${prettyHeader(key)}</span></th>`).join('') + '</tr>';
 
-    tbody.innerHTML = raw.trim().split('\n').map((line) => {
+    tbody.innerHTML = raw.trim().split('\n').map((line, index) => {
         const parts = line.split('\t');
         const model = parts[0];
         const values = parts[1].trim().split(/\s+/);
-        const cells = values.map((value) => {
-            const num = Number(value);
-            return `<td class="score-cell" style="background:${heatColor(num)}">${num.toFixed(2)}</td>`;
-        }).join('');
-        return `<tr><td class="sticky-col">${model}</td>${cells}</tr>`;
+        const cells = values.map((value) => `<td class="score-cell">${Number(value).toFixed(2)}</td>`).join('');
+        return `<tr class="${tierClass(index)}"><td class="sticky-col">${model}</td>${cells}</tr>`;
     }).join('');
 }
 

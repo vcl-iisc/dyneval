@@ -1690,17 +1690,34 @@ a:focus {
 .category-scores-table .score-cell {
   color: #1f2937;
   font-weight: 600;
-  transition: transform 0.12s ease;
 }
 
-.category-scores-table tbody tr:hover .score-cell {
-  filter: saturate(1.35) brightness(0.98);
+/* Tier coloring (matches the Overall tab tier badges) */
+.category-scores-table tbody tr.cat-tier-one td { background: #e0f2fe; }
+.category-scores-table tbody tr.cat-tier-two td { background: #ede9fe; }
+.category-scores-table tbody tr.cat-tier-three td { background: #ffedd5; }
+
+.category-scores-table tbody tr.cat-tier-one .sticky-col {
+  background: #cde9fb;
+  color: #075985;
+  box-shadow: inset 3px 0 0 #0ea5e9, 1px 0 0 rgb(148 163 184 / 0.28);
 }
 
-.category-scores-table tbody tr:hover .sticky-col {
-  background: #eef4ff;
-  color: var(--primary-color);
+.category-scores-table tbody tr.cat-tier-two .sticky-col {
+  background: #e2dbfa;
+  color: #5b21b6;
+  box-shadow: inset 3px 0 0 #8b5cf6, 1px 0 0 rgb(148 163 184 / 0.28);
 }
+
+.category-scores-table tbody tr.cat-tier-three .sticky-col {
+  background: #ffe4c2;
+  color: #9a3412;
+  box-shadow: inset 3px 0 0 #f97316, 1px 0 0 rgb(148 163 184 / 0.28);
+}
+
+.category-scores-table tbody tr.cat-tier-one:hover td { background: #d3ecfd; }
+.category-scores-table tbody tr.cat-tier-two:hover td { background: #e6dffb; }
+.category-scores-table tbody tr.cat-tier-three:hover td { background: #ffedcf; }
 
 .category-scores-table tbody tr:last-child td {
   border-bottom: none;
