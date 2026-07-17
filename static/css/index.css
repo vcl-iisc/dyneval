@@ -1657,8 +1657,8 @@ a:focus {
   color: #0f172a;
   font-weight: 700;
   font-size: 0.8rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  text-transform: none;
   vertical-align: bottom;
   border-bottom: 2px solid #94a3b8;
 }
