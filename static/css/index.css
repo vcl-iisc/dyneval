@@ -1575,3 +1575,97 @@ a:focus {
     box-shadow: none !important;
   }
 }
+
+/* DynEval-1K Leaderboard tabs */
+.leaderboard-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.1rem 0 1.35rem;
+}
+
+.leaderboard-tab {
+  padding: 0.6rem 1.15rem;
+  color: var(--text-secondary);
+  background: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 9px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: color .15s, background-color .15s, border-color .15s;
+}
+
+.leaderboard-tab:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.leaderboard-tab.is-active {
+  color: #ffffff;
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.leaderboard-panel[hidden] {
+  display: none;
+}
+
+/* Wide per-category scores table */
+.category-scores-wrap {
+  overflow: auto;
+  max-height: 72vh;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-scores-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.category-scores-table th,
+.category-scores-table td {
+  padding: 0.42rem 0.6rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.category-scores-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  font-weight: 800;
+  vertical-align: bottom;
+}
+
+.category-scores-table .sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  text-align: left;
+  font-weight: 700;
+  background: var(--background-primary);
+  box-shadow: 1px 0 0 var(--border-color);
+}
+
+.category-scores-table thead .sticky-col {
+  z-index: 3;
+  background: var(--background-secondary);
+}
+
+.category-scores-table tbody tr:hover td {
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.category-scores-table tbody tr:hover .sticky-col {
+  background: #eef4ff;
+}
