@@ -1618,7 +1618,9 @@ a:focus {
   overflow: auto;
   max-height: 72vh;
   border: 1px solid var(--border-color);
-  border-radius: 10px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  background: var(--background-primary);
   -webkit-overflow-scrolling: touch;
 }
 
@@ -1628,23 +1630,35 @@ a:focus {
   margin: 0;
   font-size: 0.72rem;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 .category-scores-table th,
 .category-scores-table td {
-  padding: 0.42rem 0.6rem;
+  padding: 0.4rem 0.62rem;
   text-align: center;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgb(148 163 184 / 0.16);
 }
 
 .category-scores-table thead th {
   position: sticky;
   top: 0;
   z-index: 2;
-  background: var(--background-secondary);
-  color: var(--text-primary);
-  font-weight: 800;
+  background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+  color: #f8fafc;
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   vertical-align: bottom;
+  border-bottom: none;
+}
+
+.category-scores-table thead th span {
+  display: inline-block;
+  max-width: 6.5rem;
+  white-space: normal;
+  line-height: 1.15;
 }
 
 .category-scores-table .sticky-col {
@@ -1653,19 +1667,32 @@ a:focus {
   z-index: 1;
   text-align: left;
   font-weight: 700;
+  color: var(--text-primary);
   background: var(--background-primary);
-  box-shadow: 1px 0 0 var(--border-color);
+  box-shadow: 1px 0 0 rgb(148 163 184 / 0.28);
 }
 
 .category-scores-table thead .sticky-col {
   z-index: 3;
-  background: var(--background-secondary);
+  background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+  color: #f8fafc;
 }
 
-.category-scores-table tbody tr:hover td {
-  background: rgba(37, 99, 235, 0.06);
+.category-scores-table .score-cell {
+  color: #1f2937;
+  font-weight: 600;
+  transition: transform 0.12s ease;
+}
+
+.category-scores-table tbody tr:hover .score-cell {
+  filter: saturate(1.35) brightness(0.98);
 }
 
 .category-scores-table tbody tr:hover .sticky-col {
   background: #eef4ff;
+  color: var(--primary-color);
+}
+
+.category-scores-table tbody tr:last-child td {
+  border-bottom: none;
 }
